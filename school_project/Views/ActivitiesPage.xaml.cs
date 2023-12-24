@@ -1,0 +1,9 @@
+namespace school_project.Views;
+
+public partial class ActivitiesPage : ContentPage
+{
+	public ActivitiesPage()
+	{
+		InitializeComponent();
+	}
+}
