@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "xc1ABDErzoYE1E0hTrPicG5uzuLZ/6NENNwX7g74V2nP67e9DeKU0SXxph9wN9FPZ0FGDK3kRTZpiTZowc1czg==",
+  "dgSpecHash": "VuQ6f8f8DqV/yHga24PtuicqnAeOre0U2m5nXeC1n6UCBcLjGNqy7aY8+cPjXVsdBLxqa8JvZ7b4IBK8TbyfEw==",
   "success": true,
   "projectFilePath": "C:\\Private\\Folders\\Ecam\\3BE\\Programmation orientée objet\\school_project\\school_project\\school_project.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\doria\\.nuget\\packages\\communitytoolkit.mvvm\\8.2.2\\communitytoolkit.mvvm.8.2.2.nupkg.sha512",
     "C:\\Users\\doria\\.nuget\\packages\\googlegson\\2.9.1.1\\googlegson.2.9.1.1.nupkg.sha512",
     "C:\\Users\\doria\\.nuget\\packages\\microsoft.extensions.configuration\\7.0.0\\microsoft.extensions.configuration.7.0.0.nupkg.sha512",
     "C:\\Users\\doria\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\7.0.0\\microsoft.extensions.configuration.abstractions.7.0.0.nupkg.sha512",

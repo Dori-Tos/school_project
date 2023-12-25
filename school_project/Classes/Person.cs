@@ -10,13 +10,12 @@ using school_project.Services;
 namespace school_project.Classes
 {
 
-
     public class Person
     {
 
         public DataManager dataManager;
-        public string firstname;
-        public string lastname;
+        public string firstname { get; set; }
+        public string lastname { get; set; }
         public Person(string firstname, string lastname)
         {
             this.firstname = firstname;
@@ -31,14 +30,14 @@ namespace school_project.Classes
 
     public class Teacher : Person
     {
-        public int salary;
+        public int salary { get; set; }
 
 
-        public Teacher(string firstname, string lastname, int salary) :
+    public Teacher(string firstname, string lastname, int salary) :
             base(firstname, lastname)
         {
             this.salary = salary;
-            dataManager.AddTeacher(this);
+            //dataManager.AddTeacher(this);
         }
 
     }

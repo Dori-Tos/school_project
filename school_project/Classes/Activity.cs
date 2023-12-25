@@ -1,8 +1,10 @@
-﻿using System;
+﻿using Microsoft.Maui.Storage;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace school_project.Classes
 {
@@ -19,5 +21,16 @@ namespace school_project.Classes
             this.code = code;
             this.teacher = teacher;
         }
+        public void Save() { }
+        public void Delete() { }
+
+        public void Load(string file) { }
+
+        //public static IEnumerable<Activity> LoadAll() 
+        //{
+        //    string appDataPath = FileSystem.AppDataDirectory;
+
+        //    return false;
+        //}
     }
 }

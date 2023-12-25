@@ -3,10 +3,29 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="school_project.Views.TeachersPage"
              Title="TeachersPage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+
+    <StackLayout>
+        <ListView x:Name="ListTeachers">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="{Binding firstname}" />
+                            <Label Text="{Binding lastname}" Margin="5,0,0,0"/>
+                            <Label Text="{Binding salary}" Margin="5,0,0,0"/>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Entry x:Name="entryFirstName" Placeholder="Firstname"/>
+
+        <Entry x:Name="entryLastName" Placeholder="Lastname"/>
+
+        <Entry x:Name="entrySalary" Placeholder="Salary" Keyboard="Numeric"/>
+
+        <Button Text="Add New Teacher" Clicked="AddNewTeacherClicked"/>
+    </StackLayout>
+
 </ContentPage>

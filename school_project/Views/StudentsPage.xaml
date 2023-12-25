@@ -9,25 +9,39 @@
     Spacing="25"
     Padding="30,0"
     VerticalOptions="Center">
+            
+            <ListView x:Name="ListTeachers">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="{Binding firstname}" />
+                                    <Label Text="{Binding lastname}" Margin="5,0,0,0"/>
+                                <Button
+                                    x:Name="AddEvalButton"
+                                    Text="Add an Evaluation"
+                                    Clicked="OnAddEvalButtonClicked"
+                                    HorizontalOptions="Center"
+                                    Margin="5,0,0,0"/>
+                                <Button
+                                    x:Name="BulletinButton"
+                                    Text="Bulletin"
+                                    Clicked="OnBulletinButtonClicked"
+                                    HorizontalOptions="Center"
+                                    Margin="5,0,0,0"/>
 
-            <Label
-        Text="StudentsList"
-        SemanticProperties.HeadingLevel="Level1"
-        FontSize="24"
-        HorizontalOptions="Center" />
+                            </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
 
-            <Button
-        x:Name="AddEvalButton"
-        Text="Add an Evaluation"
-        Clicked="OnAddEvalButtonClicked"
-        HorizontalOptions="Center" />
+            <Entry x:Name="entryFirstName" Placeholder="Firstname"/>
 
-            <Button
-        x:Name="BulletinButton"
-        Text="Bulletin"
-        Clicked="OnBulletinButtonClicked"
-        HorizontalOptions="Center" />
+            <Entry x:Name="entryLastName" Placeholder="Lastname"/>
 
+            <Button Text="Add New Student" Clicked="AddNewStudentClicked"/>
+                
         </VerticalStackLayout>
     </ScrollView>
 
