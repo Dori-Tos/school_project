@@ -1,6 +1,7 @@
 using Microsoft.Maui.Controls;
 using Newtonsoft.Json;
 using school_project.Classes;
+using school_project.Services;
 using System.Collections.ObjectModel;
 using System.IO;
 
@@ -26,9 +27,10 @@ public partial class TeachersPage : ContentPage
     {
         try
         {
-            string filepath = "C:\\Private\\Folders\\Ecam\\3BE\\Programmation orientée objet\\school_files\\teachers.txt";
 
-            string jsonContent = File.ReadAllText(filepath);
+            string relativeTeacherPath = System.IO.Path.Combine(FileSystem.AppDataDirectory, "teacher.json");
+
+            string jsonContent = File.ReadAllText(relativeTeacherPath);
 
             var teachers = JsonConvert.DeserializeObject<List<Teacher>>(jsonContent);
 
@@ -54,6 +56,8 @@ public partial class TeachersPage : ContentPage
         var newTeacher = new Teacher(firstname, lastname, salary);
         Teachers.Add(newTeacher);
 
+        DataManager dataManager = new DataManager();
+        dataManager.AddToJson(newTeacher);
 
         entryFirstName.Text = string.Empty;
         entryLastName.Text = string.Empty;

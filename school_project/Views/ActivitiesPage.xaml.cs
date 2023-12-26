@@ -9,13 +9,13 @@ namespace school_project.Views;
 
 public partial class ActivitiesPage : ContentPage
 {
-    public ObservableCollection<Activity> Activities { get; set; }
+    public ObservableCollection<Acti> Activities { get; set; }
 
     public ActivitiesPage()
 	{
 		InitializeComponent();
 
-        Activities = new ObservableCollection<Activity>();
+        Activities = new ObservableCollection<Acti>();
 
         ListActivities.ItemsSource = Activities;
 
@@ -26,11 +26,11 @@ public partial class ActivitiesPage : ContentPage
     {
         try
         {
-            string filepath = "C:\\Private\\Folders\\Ecam\\3BE\\Programmation orientée objet\\school_files\\activities.txt";
+            string relativeActiPath = System.IO.Path.Combine(FileSystem.AppDataDirectory, "acti.json");
 
-            string jsonContent = File.ReadAllText(filepath);
+            string jsonContent = File.ReadAllText(relativeActiPath);
 
-            var activities = JsonConvert.DeserializeObject<List<Activity>>(jsonContent);
+            var activities = JsonConvert.DeserializeObject<List<Acti>>(jsonContent);
 
             foreach (var activity in activities)
             {
