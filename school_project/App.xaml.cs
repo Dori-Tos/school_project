@@ -17,7 +17,7 @@ namespace school_project
 
             DataManager dataManager = new DataManager();
 
-            
+        
 
             Teacher YUP = new Teacher("Elise", "Cocle", 2880);
             Acti Elec = new Acti(4, "Elec Num", "A456", YUP);

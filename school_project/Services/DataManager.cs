@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using school_project.Classes;
 using Newtonsoft.Json;
 using System.Diagnostics;
+using Microsoft.Maui.Storage;
 //using static Android.Provider.MediaStore;
 
 namespace school_project.Services
@@ -18,9 +19,13 @@ namespace school_project.Services
         private List<Acti> Activities { get; set;  } = new List<Acti>();
 
         // Chemin relatif depuis le répertoire de base de l'application
-        private string relativeTeacherPath = Path.Combine(AppContext.BaseDirectory, "teacher.json");
-        private string relativeStudentPath = Path.Combine(AppContext.BaseDirectory, "student.json");
-        private string relativeActiPath = Path.Combine(AppContext.BaseDirectory, "acti.json");
+
+        
+        
+
+        private string relativeTeacherPath =  System.IO.Path.Combine(FileSystem.AppDataDirectory, "teacher.json");
+        private string relativeStudentPath = System.IO.Path.Combine(FileSystem.AppDataDirectory, "student.json");
+        private string relativeActiPath = System.IO.Path.Combine(FileSystem.AppDataDirectory, "acti.json");
 
         private bool flagStop = false;
 
