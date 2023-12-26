@@ -42,7 +42,7 @@ namespace school_project.Classes
             base(firstname, lastname)
         {
             this.salary = salary;
-            //dataManager.AddTeacher(this);
+            dataManager.AddTeacher(this);
         }
 
     }
