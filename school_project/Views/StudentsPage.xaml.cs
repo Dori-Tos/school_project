@@ -81,7 +81,7 @@ public partial class StudentsPage : ContentPage
         var lastname = entryLastName.Text;
         List<Evaluation> evaluations = new List<Evaluation>();
 
-        var newStudent = new Student(firstname, lastname, evaluations);
+        var newStudent = new Student(firstname, lastname);
         Students.Add(newStudent);
 
         DataManager dataManager = new DataManager();

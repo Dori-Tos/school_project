@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using school_project.Services;
+using System.Diagnostics;
 
 namespace school_project.Classes
 {
@@ -47,20 +48,26 @@ namespace school_project.Classes
     public class Student : Person
     {
         private List<Evaluation> cours = new List<Evaluation>();
+        private double credits = 0;
+        private double avg = 0;
 
-        public Student(string firstname, string lastname, List<Evaluation> cours) :
+        public Student(string firstname, string lastname) :
             base(firstname, lastname)
-        {
-            this.cours = cours;
+        {    
         }
+
+        public List<Evaluation> EvalList
+        {
+            get { return cours; }
+        }
+
 
         public void Add(Evaluation new_evaluation)
         {
             cours.Add(new_evaluation);
+            Debug.WriteLine(new_evaluation.activity.name);
         }
-        double credits = 0;
 
-        double avg = 0;
         public double Average()
         {
             for (int i = 0; i < cours.Count; i++)

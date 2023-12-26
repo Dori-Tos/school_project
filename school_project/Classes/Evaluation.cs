@@ -8,7 +8,7 @@ using System.Windows.Input;
 
 namespace school_project.Classes
 {
-    public abstract class Evaluation
+    public class Evaluation
     {
         public Acti activity;
         public Evaluation(Acti activity)
@@ -16,7 +16,10 @@ namespace school_project.Classes
             this.activity = activity;
         }
 
-        public abstract int Note();
+        public virtual int Note()
+        {
+            return 0;
+        }
     }
 
     public class Cote : Evaluation

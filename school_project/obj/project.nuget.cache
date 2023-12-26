@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "8rJHYSWuL4jQ2pd6meYnFzZT7NC9DQeNPqzS6AAk1LgYUH4Ke79uZ1BLBdYoLtnHEjSR7QbFHEzVHe/vIfHGYw==",
+  "dgSpecHash": "Dt71JfAMU+iq7T/4AfwNwtzzxM/lz8cuy10cqHBudR24nKlPtqkQxkuwxeoriQBwOlnlw6Ov/J5LtBL9LCbSJA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Arthur\\Source\\Repos\\school_project\\school_project\\school_project.csproj",
+  "projectFilePath": "C:\\Users\\Arthur\\source\\repos\\school_project\\school_project\\school_project.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Arthur\\.nuget\\packages\\communitytoolkit.mvvm\\8.2.2\\communitytoolkit.mvvm.8.2.2.nupkg.sha512",
     "C:\\Users\\Arthur\\.nuget\\packages\\googlegson\\2.9.1.1\\googlegson.2.9.1.1.nupkg.sha512",

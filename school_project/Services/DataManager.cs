@@ -7,6 +7,8 @@ using school_project.Classes;
 using Newtonsoft.Json;
 using System.Diagnostics;
 using Microsoft.Maui.Storage;
+using System.Collections;
+//using Windows.UI.ViewManagement;
 //using static Android.Provider.MediaStore;
 
 namespace school_project.Services
@@ -26,48 +28,107 @@ namespace school_project.Services
         private string relativeTeacherPath =  System.IO.Path.Combine(FileSystem.AppDataDirectory, "teacher.json");
         private string relativeStudentPath = System.IO.Path.Combine(FileSystem.AppDataDirectory, "student.json");
         private string relativeActiPath = System.IO.Path.Combine(FileSystem.AppDataDirectory, "acti.json");
-
-        private bool flagStop = false;
+        private string relativeUnexpectedPath = System.IO.Path.Combine(FileSystem.AppDataDirectory, "unexpectedObjectType.json");
 
         public void AddToJson(Object schoolElement)
         {
-            var ListElement = new List<object>();
-            var PathElement = "";
+            // Obtenir le type de l'objet
             Type elementType = schoolElement.GetType();
+
+            // Charger la liste existante depuis le fichier JSON
+            List<object> listElement = LoadListFromJson(elementType);
+
+            // Ajouter l'élément à la liste
+            listElement.Add(schoolElement);
+
+            // Enregistrer la liste mise à jour dans le fichier JSON
+            SaveListToJson(listElement, elementType);
+        }
+
+        private List<object> LoadListFromJson(Type objectType)
+        {
+            string pathElement = SetPath(objectType);
+
+            // Vérifier si le fichier existe
+            if (!File.Exists(pathElement))
+            {
+                return new List<object>();
+            }
+
+            string json = File.ReadAllText(pathElement);
+            return JsonConvert.DeserializeObject<List<object>>(json);
+        }
+
+        private void SaveListToJson(List<object> ListElement, Type objectType)
+        {
+            string PathElement = SetPath(objectType);
+
+            // Écrire la liste dans le fichier JSON
+            string updatedJson = JsonConvert.SerializeObject(ListElement, Formatting.Indented);
+            File.WriteAllText(PathElement, updatedJson);
+        }
+
+
+        protected string SetPath(Type objectType)
+        {
+            var PathElement = relativeUnexpectedPath;
+            Type elementType = objectType;
 
             if (elementType == typeof(Teacher))
             {
-                ListElement = Teachers.Cast<object>().ToList();
                 PathElement = relativeTeacherPath;
             }
             else if (elementType == typeof(Student))
             {
-                ListElement = Students.Cast<object>().ToList();
                 PathElement = relativeStudentPath;
             }
             else if (elementType == typeof(Acti))
             {
-                ListElement = Activities.Cast<object>().ToList();
                 PathElement = relativeActiPath;
             }
+            return PathElement;
+        }
+
+        
+
+    }
+
+    public class DataManagerStudent : DataManager
+    {
+
+        private List<Student> LoadListFromJson()
+        {
+            string pathElement = SetPath(typeof(Student));
 
             // Vérifier si le fichier existe
-            if (!File.Exists(PathElement))
+            if (!File.Exists(pathElement))
             {
-                // Créer le fichier s'il n'existe pas
-                File.WriteAllText(PathElement, "[]");
+                return new List<Student>();
             }
 
-            string json = File.ReadAllText(PathElement);
-
-            ListElement = JsonConvert.DeserializeObject<List<object>>(json);
-
-            ListElement.Add(schoolElement);
-
-            string updatedJson = JsonConvert.SerializeObject(ListElement, Formatting.Indented);
-
-            File.WriteAllText(PathElement, updatedJson);
-            Debug.WriteLine(PathElement);
+            string json = File.ReadAllText(pathElement);
+            return JsonConvert.DeserializeObject<List<Student>>(json);
         }
+
+        public Student GetStudentById(int index)
+        {
+            List<Student> listStudents = LoadListFromJson();
+            if (index >= 0 && index < listStudents.Count)
+            {
+                return (Student)listStudents[index];
+            }
+            return null;
+        }
+
+        public void ResendToJson(Student student, )
+        {
+
+        }
+        public void DeleteStudentById(int index)
+        {
+            List<Student> listStudents = LoadListFromJson();
+            listStudents.RemoveAt(index);
+        }
+
     }
 }
