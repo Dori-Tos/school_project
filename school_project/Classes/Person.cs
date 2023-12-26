@@ -46,7 +46,7 @@ namespace school_project.Classes
 
     public class Student : Person
     {
-        private List<Evaluation> cours = new List<Evaluation>();
+        public List<Evaluation> cours = new List<Evaluation>();
 
         public Student(string firstname, string lastname, List<Evaluation> cours) :
             base(firstname, lastname)

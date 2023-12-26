@@ -2,27 +2,34 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="school_project.Views.AddEvalPage"
-             Title="AddEvalPage">
-    
+             Title="Add Evaluation">
+
     <ScrollView>
         <VerticalStackLayout
-    Spacing="25"
-    Padding="30,0"
-    VerticalOptions="Center">
+            Spacing="25"
+            Padding="30,0"
+            VerticalOptions="Center">
 
-            <Label
-        Text="StudentsList"
-        SemanticProperties.HeadingLevel="Level1"
-        FontSize="24"
-        HorizontalOptions="Center" />
+            <Picker 
+                x:Name="activityPicker" 
+                Title="Select Activity">
+            </Picker>
+
+            <Entry 
+                x:Name="pointsEntry" 
+                Placeholder="Enter Points"/>
+
+            <Button 
+                Text="Add Evaluation" 
+                Clicked="OnAddEvaluationClicked"/>
 
             <Button
-        x:Name="StudentsButton"
-        Text="Return to the list of students"
-        Clicked="OnStudentsButtonClicked"
-        HorizontalOptions="Center" />
+                x:Name="StudentsButton"
+                Text="Return to the list of students"
+                Clicked="OnStudentsButtonClicked"
+                HorizontalOptions="Center" />
 
         </VerticalStackLayout>
     </ScrollView>
-    
+
 </ContentPage>

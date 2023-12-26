@@ -19,8 +19,6 @@ namespace school_project.Services
         private List<Acti> Activities { get; set;  } = new List<Acti>();
 
         // Chemin relatif depuis le répertoire de base de l'application
-
-        
         
 
         private string relativeTeacherPath =  System.IO.Path.Combine(FileSystem.AppDataDirectory, "teacher.json");
