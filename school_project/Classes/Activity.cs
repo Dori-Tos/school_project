@@ -10,10 +10,10 @@ namespace school_project.Classes
 {
     public class Activity
     {
-        public int ECTS;
-        public string name;
-        public string code;
-        public Teacher teacher;
+        public int ECTS { get; set; }
+        public string name { get; set; }
+        public string code { get; set; }
+        public Teacher teacher { get; set; }
         public Activity(int ECTS, string name, string code, Teacher teacher)
         {
             this.ECTS = ECTS;

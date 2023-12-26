@@ -18,7 +18,7 @@ public partial class StudentsPage : ContentPage
 
         Students = new ObservableCollection<Student>();
 
-        ListTeachers.ItemsSource = Students;
+        ListStudents.ItemsSource = Students;
 
         LoadStudents();
     }

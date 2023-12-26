@@ -29,13 +29,13 @@
     <AppXManifest Include="C:\Private\Folders\Ecam\3BE\Programmation orientée objet\school_project\school_project\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2023-12-25T16:33:21.582</Modified>
+      <Modified>2023-12-26T10:11:34.119</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Private\Folders\Ecam\3BE\Programmation orientée objet\school_project\school_project\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2023-12-25T16:33:21.243</Modified>
+      <Modified>2023-12-26T10:11:33.790</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Private\Folders\Ecam\3BE\Programmation orientée objet\school_project\school_project\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\school_project.runtimeconfig.json">
       <PackagePath>school_project.runtimeconfig.json</PackagePath>
@@ -43,11 +43,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Private\Folders\Ecam\3BE\Programmation orientée objet\school_project\school_project\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\school_project.dll">
       <PackagePath>school_project.dll</PackagePath>
-      <Modified>2023-12-25T16:33:19.916</Modified>
+      <Modified>2023-12-26T10:11:32.493</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Private\Folders\Ecam\3BE\Programmation orientée objet\school_project\school_project\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\apphost.exe">
       <PackagePath>school_project.exe</PackagePath>
-      <Modified>2023-12-25T16:33:19.933</Modified>
+      <Modified>2023-12-26T10:11:32.500</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Private\Folders\Ecam\3BE\Programmation orientée objet\school_project\school_project\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\school_project.deps.json">
       <PackagePath>school_project.deps.json</PackagePath>

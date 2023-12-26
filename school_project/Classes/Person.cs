@@ -22,10 +22,15 @@ namespace school_project.Classes
             this.lastname = lastname;
         }
 
-        public string DisplayName()
+        public string DisplayName
         {
-            return String.Format("{0} {1}", firstname, lastname);
+            get { return $"{firstname} {lastname}"; }
         }
+
+        //public string DisplayName()
+        //{
+        //    return String.Format("{0} {1}", firstname, lastname);
+        //}
     }
 
     public class Teacher : Person

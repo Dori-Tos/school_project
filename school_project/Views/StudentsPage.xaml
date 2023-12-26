@@ -10,7 +10,7 @@
     Padding="30,0"
     VerticalOptions="Center">
             
-            <ListView x:Name="ListTeachers">
+            <ListView x:Name="ListStudents">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
