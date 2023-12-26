@@ -29,13 +29,13 @@
     <AppXManifest Include="C:\Users\Arthur\source\repos\school_project\school_project\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2023-12-26T17:24:55.906</Modified>
+      <Modified>2023-12-26T22:37:19.004</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\Arthur\source\repos\school_project\school_project\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2023-12-26T17:23:18.790</Modified>
+      <Modified>2023-12-26T22:35:44.842</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Arthur\source\repos\school_project\school_project\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\school_project.runtimeconfig.json">
       <PackagePath>school_project.runtimeconfig.json</PackagePath>
@@ -43,11 +43,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Arthur\source\repos\school_project\school_project\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\school_project.dll">
       <PackagePath>school_project.dll</PackagePath>
-      <Modified>2023-12-26T17:24:55.165</Modified>
+      <Modified>2023-12-26T22:37:18.270</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Arthur\source\repos\school_project\school_project\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\apphost.exe">
       <PackagePath>school_project.exe</PackagePath>
-      <Modified>2023-12-26T17:24:55.168</Modified>
+      <Modified>2023-12-26T22:37:18.272</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Arthur\source\repos\school_project\school_project\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\school_project.deps.json">
       <PackagePath>school_project.deps.json</PackagePath>

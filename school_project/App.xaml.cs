@@ -21,23 +21,47 @@ namespace school_project
             Teacher YUP = new Teacher("Quentin", "Lurkin", 1500);
 
             Acti ELEC = new Acti(5, "ANAL", "A125", YUP);
-            Acti SIGN = new Acti(4, "POO", "S45", YUP);
-            Acti NEW = new Acti(5, "OLD", "OLD", YUP);
+            Acti SIGN = new Acti(4, "SIGN", "S45", YUP);
+            Acti PROG = new Acti(5, "PROG", "P125", YUP);
+            Acti POO = new Acti(3, "POO", "PO25", YUP);
+
+            Cote eval = new Cote(ELEC, 16);
+            Cote eval2 = new Cote(ELEC, 18);
+            Cote eval3 = new Cote(ELEC, 5);
+            Cote eval4 = new Cote(SIGN, 12);
+            Cote eval5 = new Cote(SIGN, 13);
+
+            YIP.Add(eval4);
+            YIP.Add(eval);
+            YIP.Add(eval2);
+            YIP.Add(eval3);
+            YIP.Add(eval5);
+
+            YIP.GetActivitiesList();
+            YIP.GetNotesList();
 
             DataManager dataManager = new DataManager();
             DataManagerStudent dataManagerStudent = new DataManagerStudent();
 
-            //dataManager.AddToJson(YIP);
-            //dataManager.AddToJson(YGG);
+            dataManager.AddToJson(YIP);
 
-            //Action button ADD
+            //Action button Print Bulletin
+/*
+            Student anonym = dataManagerStudent.GetStudentById(1);
+            anonym.GetActivitiesList();
+            anonym.GetNotesList();
+            anonym.Average();
+ */
 
+
+
+            //Action button ADD Eval
+/*
             Cote eval = new Cote(NEW,16);
-            Student antony = dataManagerStudent.GetStudentById(1);
-            antony.Add(eval);
-            dataManagerStudent.ResendToJson(antony,1);
-
-
+            Student lambda = dataManagerStudent.GetStudentById(0);
+            lambda.Add(eval);
+            dataManagerStudent.ResendToJson(lambda,0);
+*/
             Debug.WriteLine("Finito JSON");
 
             MainPage = new AppShell();

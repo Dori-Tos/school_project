@@ -62,7 +62,7 @@ namespace school_project.Services
         private void SaveListToJson(List<object> ListElement, Type objectType)
         {
             string PathElement = SetPath(objectType);
-
+            Debug.WriteLine(PathElement);
             // Écrire la liste dans le fichier JSON
             string updatedJson = JsonConvert.SerializeObject(ListElement, Formatting.Indented);
             File.WriteAllText(PathElement, updatedJson);
@@ -87,6 +87,7 @@ namespace school_project.Services
                 PathElement = relativeActiPath;
             }
             return PathElement;
+            
         }
 
         
@@ -124,8 +125,9 @@ namespace school_project.Services
         {
             List<Student> listStudents = LoadListFromJson();
             if (index >= 0 && index < listStudents.Count)
-            {
-                return (Student)listStudents[index];
+            { 
+                Student student = (Student)listStudents[index];
+                return student;
             }
             return null;
         }
@@ -141,6 +143,5 @@ namespace school_project.Services
             List<Student> listStudents = LoadListFromJson();
             listStudents.RemoveAt(index);
         }
-
     }
 }

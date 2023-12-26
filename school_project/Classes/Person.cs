@@ -25,11 +25,6 @@ namespace school_project.Classes
         {
             get { return $"{firstname} {lastname}"; }
         }
-
-        //public string DisplayName()
-        //{
-        //    return String.Format("{0} {1}", firstname, lastname);
-        //}
     }
 
     public class Teacher : Person
@@ -82,13 +77,56 @@ namespace school_project.Classes
             return (avg);
         }
 
-        public void Bulletin()
+        public List<string> GetActivitiesList()
         {
+            List<string> actiList = new List<string>();
             for (int i = 0; i < cours.Count; i++)
             {
-                Console.WriteLine("{0} : {1} donné par {2}, points : {3}", cours[i].activity.code, cours[i].activity.name, cours[i].activity.teacher, cours[i].Note());
+                if (!actiList.Contains(cours[i].activity.name))
+                {
+                    actiList.Add(cours[i].activity.name.ToString());
+                }
             }
-            Console.WriteLine("La moyenne générale est : {0}", Average());
+            Debug.WriteLine("Contenu de coteList :");
+            foreach (var valeur in actiList)
+            {
+                Debug.WriteLine(valeur);
+            }
+            return actiList;
+        }
+
+        public List<float> GetNotesList()
+        {
+            List<float> coteList = new List<float>();
+            List<string> actiList = new List<string>();
+            List<int> denom = new List<int>();
+
+            for (int i = 0; i < cours.Count; i++)
+            {
+                if (!actiList.Contains(cours[i].activity.name))
+                {
+                    //Debug.WriteLine("DIFF");
+                    actiList.Add(cours[i].activity.name.ToString());
+                    coteList.Add(cours[i].Note());
+                    denom.Add(1);
+                }
+                else
+                {
+                    //Debug.WriteLine("SAME");
+                    var doublon = cours[i].activity.name;
+                    int index = actiList.FindIndex(item => item == doublon);
+                    coteList[index] += cours[i].Note();
+                    Debug.WriteLine(cours[i].Note());
+                    denom[index] += 1;
+                }
+            }
+            coteList = coteList.Zip(denom, (num, denom) => num / denom).ToList();
+            Debug.WriteLine("Contenu de coteList :");
+            foreach (var valeur in coteList)
+            {
+                Debug.WriteLine(valeur);
+            }
+            return coteList;
         }
     }
 

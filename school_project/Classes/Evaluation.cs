@@ -11,6 +11,7 @@ namespace school_project.Classes
     public class Evaluation
     {
         public Acti activity;
+        public int note;
         public Evaluation(Acti activity)
         {
             this.activity = activity;
@@ -18,13 +19,12 @@ namespace school_project.Classes
 
         public virtual int Note()
         {
-            return 0;
+            return note;
         }
     }
 
     public class Cote : Evaluation
     {
-        public int note;
 
         public Cote(Acti activity, int note) :
             base(activity)
