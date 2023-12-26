@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Diagnostics.Tracing;
+using school_project.Services;
 
 namespace school_project.Views;
 
@@ -47,9 +48,9 @@ public partial class StudentsPage : ContentPage
     {
         try
         {
-            string filepath = "C:\\Private\\Folders\\Ecam\\3BE\\Programmation orientée objet\\school_files\\students.txt";
+            string relativeStudentPath = System.IO.Path.Combine(FileSystem.AppDataDirectory, "student.json");
 
-            string jsonContent = File.ReadAllText(filepath);
+            string jsonContent = File.ReadAllText(relativeStudentPath);
 
             var students = JsonConvert.DeserializeObject<List<Student>>(jsonContent);
 
@@ -82,6 +83,9 @@ public partial class StudentsPage : ContentPage
 
         var newStudent = new Student(firstname, lastname, evaluations);
         Students.Add(newStudent);
+
+        DataManager dataManager = new DataManager();
+        dataManager.AddToJson(newStudent);
 
 
         entryFirstName.Text = string.Empty;

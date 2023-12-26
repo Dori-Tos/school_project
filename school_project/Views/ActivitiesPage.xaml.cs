@@ -26,9 +26,9 @@ public partial class ActivitiesPage : ContentPage
     {
         try
         {
-            string filepath = "C:\\Private\\Folders\\Ecam\\3BE\\Programmation orientée objet\\school_files\\activities.txt";
+            string relativeActiPath = System.IO.Path.Combine(FileSystem.AppDataDirectory, "acti.json");
 
-            string jsonContent = File.ReadAllText(filepath);
+            string jsonContent = File.ReadAllText(relativeActiPath);
 
             var activities = JsonConvert.DeserializeObject<List<Acti>>(jsonContent);
 
