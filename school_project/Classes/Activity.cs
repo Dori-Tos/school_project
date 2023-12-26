@@ -1,17 +1,19 @@
-﻿using System;
+﻿using Microsoft.Maui.Storage;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace school_project.Classes
 {
     public class Activity
     {
-        public int ECTS;
-        public string name;
-        public string code;
-        public Teacher teacher;
+        public int ECTS { get; set; }
+        public string name { get; set; }
+        public string code { get; set; }
+        public Teacher teacher { get; set; }
         public Activity(int ECTS, string name, string code, Teacher teacher)
         {
             this.ECTS = ECTS;
@@ -19,5 +21,16 @@ namespace school_project.Classes
             this.code = code;
             this.teacher = teacher;
         }
+        public void Save() { }
+        public void Delete() { }
+
+        public void Load(string file) { }
+
+        //public static IEnumerable<Activity> LoadAll() 
+        //{
+        //    string appDataPath = FileSystem.AppDataDirectory;
+
+        //    return false;
+        //}
     }
 }
