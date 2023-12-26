@@ -95,7 +95,7 @@ namespace school_project.Services
 
     public class DataManagerStudent : DataManager
     {
-
+        //Modified for student only to be used easily in GetStudentById()
         private List<Student> LoadListFromJson()
         {
             string pathElement = SetPath(typeof(Student));
@@ -110,6 +110,16 @@ namespace school_project.Services
             return JsonConvert.DeserializeObject<List<Student>>(json);
         }
 
+        //Modified for student only to be used easily in ResendToJson
+        private void SaveListToJson(List<Student> ListElement, Type objectType)
+        {
+            string PathElement = SetPath(objectType);
+
+            // Écrire la liste dans le fichier JSON
+            string updatedJson = JsonConvert.SerializeObject(ListElement, Formatting.Indented);
+            File.WriteAllText(PathElement, updatedJson);
+        }
+
         public Student GetStudentById(int index)
         {
             List<Student> listStudents = LoadListFromJson();
@@ -120,9 +130,11 @@ namespace school_project.Services
             return null;
         }
 
-        public void ResendToJson(Student student, )
+        public void ResendToJson(Student student, int index)
         {
-
+            List<Student> listStudents = LoadListFromJson();
+            listStudents[index] = student;
+            SaveListToJson(listStudents, typeof(Student));
         }
         public void DeleteStudentById(int index)
         {

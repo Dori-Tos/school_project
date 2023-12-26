@@ -31,10 +31,11 @@ namespace school_project
             //dataManager.AddToJson(YGG);
 
             //Action button ADD
+
             Cote eval = new Cote(NEW,16);
             Student antony = dataManagerStudent.GetStudentById(1);
             antony.Add(eval);
-            dataManager.AddToJson(antony);
+            dataManagerStudent.ResendToJson(antony,1);
 
 
             Debug.WriteLine("Finito JSON");
