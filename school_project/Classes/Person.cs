@@ -12,8 +12,6 @@ namespace school_project.Classes
 
     public class Person
     {
-
-        public DataManager dataManager;
         public string firstname { get; set; }
         public string lastname { get; set; }
         public Person(string firstname, string lastname)
@@ -42,14 +40,13 @@ namespace school_project.Classes
             base(firstname, lastname)
         {
             this.salary = salary;
-            dataManager.AddTeacher(this);
         }
 
     }
 
     public class Student : Person
     {
-        public List<Evaluation> cours = new List<Evaluation>();
+        private List<Evaluation> cours = new List<Evaluation>();
 
         public Student(string firstname, string lastname, List<Evaluation> cours) :
             base(firstname, lastname)

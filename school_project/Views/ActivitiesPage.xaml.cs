@@ -9,13 +9,13 @@ namespace school_project.Views;
 
 public partial class ActivitiesPage : ContentPage
 {
-    public ObservableCollection<Activity> Activities { get; set; }
+    public ObservableCollection<Acti> Activities { get; set; }
 
     public ActivitiesPage()
 	{
 		InitializeComponent();
 
-        Activities = new ObservableCollection<Activity>();
+        Activities = new ObservableCollection<Acti>();
 
         ListActivities.ItemsSource = Activities;
 
@@ -30,7 +30,7 @@ public partial class ActivitiesPage : ContentPage
 
             string jsonContent = File.ReadAllText(filepath);
 
-            var activities = JsonConvert.DeserializeObject<List<Activity>>(jsonContent);
+            var activities = JsonConvert.DeserializeObject<List<Acti>>(jsonContent);
 
             foreach (var activity in activities)
             {
