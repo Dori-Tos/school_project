@@ -9,8 +9,8 @@ namespace school_project.Classes
 {
     public abstract class Evaluation
     {
-        public Activity activity;
-        public Evaluation(Activity activity)
+        public Acti activity;
+        public Evaluation(Acti activity)
         {
             this.activity = activity;
         }
@@ -22,7 +22,7 @@ namespace school_project.Classes
     {
         public int note;
 
-        public Cote(Activity activity, int note) :
+        public Cote(Acti activity, int note) :
             base(activity)
         {
             this.note = note;
@@ -45,7 +45,7 @@ namespace school_project.Classes
         public string[] letters = { "X", "TB", "B", "C", "N" };
         public int[] numbers = { 20, 16, 12, 8, 4 };
 
-        public Appreciation(Activity activity, string appreciation) :
+        public Appreciation(Acti activity, string appreciation) :
             base(activity)
         {
             this.appreciation = appreciation;
