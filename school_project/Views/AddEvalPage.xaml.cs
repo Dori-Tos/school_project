@@ -55,8 +55,8 @@ public partial class AddEvalPage : ContentPage
 
         selectedStudent.Add(newEvaluation);
 
-        DataManager dataManager = new DataManager();
-        dataManager.AddToJson(newEvaluation);
+        DataManagerStudent dataManagerStudent = new DataManagerStudent();
+        dataManagerStudent.ResendToJson(selectedStudent)
 
         pointsEntry.Text = string.Empty;
 

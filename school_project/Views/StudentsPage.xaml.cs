@@ -23,7 +23,7 @@ public partial class StudentsPage : ContentPage
 
         LoadStudents();
     }
-
+    
     private async void OnAddEvalButtonClicked(object sender, EventArgs e)
     {
         if (sender is Button button && button.CommandParameter is Student selectedStudent)
