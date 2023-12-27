@@ -19,8 +19,8 @@ namespace school_project
             Student YIP = new Student("Arthur", "Van Belle");
             Student YGG = new Student("Dorian", "Smaelen");
             Teacher YUP = new Teacher("Quentin", "Lurkin", 1500);
-
-            Acti ELEC = new Acti(5, "ANAL", "A125", YUP);
+            /*
+            Acti ELEC = new Acti(5, "ANALOG", "A125", YUP);
             Acti SIGN = new Acti(4, "SIGN", "S45", YUP);
             Acti PROG = new Acti(5, "PROG", "P125", YUP);
             Acti POO = new Acti(3, "POO", "PO25", YUP);
@@ -36,14 +36,14 @@ namespace school_project
             YIP.Add(eval2);
             YIP.Add(eval3);
             YIP.Add(eval5);
-
-            YIP.GetActivitiesList();
-            YIP.GetNotesList();
+            */
+            Debug.WriteLine(YIP.GetActivitiesList());
+            Debug.WriteLine(YIP.GetNotesList());
 
             DataManager dataManager = new DataManager();
             DataManagerStudent dataManagerStudent = new DataManagerStudent();
 
-            dataManager.AddToJson(YIP);
+            //dataManager.AddToJson(YIP);
 
             //Action button Print Bulletin
 /*

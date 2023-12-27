@@ -2,27 +2,41 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="school_project.Views.BulletinPage"
-             Title="BulletinPage">
+             Title="Bulletin">
 
     <ScrollView>
-        <VerticalStackLayout
-            Spacing="25"
-            Padding="30,0"
-            VerticalOptions="Start">
+        <Grid RowSpacing="0" Padding="20">
 
-            <ListView x:Name="ListEvaluations">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200" />
+                <ColumnDefinition Width="200" />
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Row="0" Grid.Column="0" Text="Activities" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+            <ListView x:Name="ListActivities" Grid.Row="1" Grid.Column="0">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <StackLayout Orientation="Horizontal">
-                                <Label Text="{Binding activity.name}" />
-                                <Label Text="{Binding Note}" Margin="5,0,0,0"/>
-                            </StackLayout>
+                            <Label Text="{Binding .}" HorizontalTextAlignment="Center"/>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-        </VerticalStackLayout>
+
+            <Label Grid.Row="0" Grid.Column="1" Text="Notes" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+            <ListView x:Name="ListNotes" Grid.Row="1" Grid.Column="1">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Label Text="{Binding .}" HorizontalTextAlignment="Center"/>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
     </ScrollView>
-    
 </ContentPage>

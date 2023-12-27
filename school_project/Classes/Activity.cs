@@ -25,12 +25,5 @@ namespace school_project.Classes
         public void Delete() { }
 
         public void Load(string file) { }
-
-        //public static IEnumerable<Activity> LoadAll() 
-        //{
-        //    string appDataPath = FileSystem.AppDataDirectory;
-
-        //    return false;
-        //}
     }
 }

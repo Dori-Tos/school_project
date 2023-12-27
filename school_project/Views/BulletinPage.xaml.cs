@@ -13,16 +13,28 @@ public partial class BulletinPage : ContentPage
 
     public ObservableCollection<Evaluation> Evaluations { get; set; }
 
+    public List<string> studentActiList { get; set; }
+
+    public List<float> studentNotesList { get; set; }
+
     public BulletinPage(Student student)
     {
         InitializeComponent();
 
         selectedStudent = student;
 
-        ListEvaluations.ItemsSource = Evaluations;
+        studentActiList = student.GetActivitiesList();
 
-        LoadEvaluations();
-}
+        studentNotesList = student.GetNotesList();
+
+        //Evaluations = new ObservableCollection<Evaluation>();
+
+        ListActivities.ItemsSource = studentActiList;
+
+        ListNotes.ItemsSource = studentNotesList;
+
+        //LoadEvaluations();
+    }
 
     private void LoadEvaluations()
     {

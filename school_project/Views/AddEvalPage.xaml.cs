@@ -59,10 +59,7 @@ public partial class AddEvalPage : ContentPage
         dataManager.AddToJson(newEvaluation);
 
         pointsEntry.Text = string.Empty;
-    }
 
-    private async void OnStudentsButtonClicked(object sender, EventArgs e)
-    {
-        await Shell.Current.GoToAsync("///StudentsPage");
+        Confirmation.Text = "Sucessfuly added the evaluation";
     }
 }

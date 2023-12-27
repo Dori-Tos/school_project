@@ -45,8 +45,8 @@
                                         <ColumnDefinition Width="200" />
                                         <ColumnDefinition Width="100" />
                                     </Grid.ColumnDefinitions>
-                                    <Label Text="{Binding firstname}" Grid.Column="0" HorizontalTextAlignment="Center"/>
-                                    <Label Text="{Binding lastname}" Grid.Column="1" HorizontalTextAlignment="Center"/>
+                                    <Label Text="{Binding firstname}" Grid.Column="0" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                                    <Label Text="{Binding lastname}" Grid.Column="1" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                                     <Button
                                             x:Name="AddEvalButton"
                                             Text="Add an Evaluation"

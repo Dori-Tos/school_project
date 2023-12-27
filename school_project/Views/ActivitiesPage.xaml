@@ -2,11 +2,11 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="school_project.Views.ActivitiesPage"
-             Title="ActivitiesPage">
+             Title="List of Activities">
 
-    <Grid RowSpacing="0">
+    <Grid RowSpacing="0" Padding="20">
         <Grid.RowDefinitions>
-            <RowDefinition Height="30"/>
+            <RowDefinition Height="40"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
@@ -29,7 +29,7 @@
 
         <ScrollView Grid.Row="1">
             <VerticalStackLayout Spacing="25" Padding="30,0" VerticalOptions="Start">
-                <ListView x:Name="ListActivities">
+                <ListView x:Name="ListActivities"  RowHeight="35">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
@@ -40,10 +40,10 @@
                                         <ColumnDefinition Width="100" />
                                         <ColumnDefinition Width="75" />
                                     </Grid.ColumnDefinitions>
-                                    <Label Text="{Binding ECTS}" Grid.Column="0" HorizontalTextAlignment="Center"/>
-                                    <Label Text="{Binding name}" Margin="5,0,0,0" Grid.Column="1" HorizontalTextAlignment="Center"/>
-                                    <Label Text="{Binding code}" Margin="5,0,0,0" Grid.Column="2" HorizontalTextAlignment="Center"/>
-                                    <Label Text="{Binding teacher.DisplayName}" Margin="5,0,0,0" Grid.Column="3" HorizontalTextAlignment="Center"/>
+                                    <Label Text="{Binding ECTS}" Grid.Column="0" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                                    <Label Text="{Binding name}" Grid.Column="1" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                                    <Label Text="{Binding code}" Grid.Column="2" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                                    <Label Text="{Binding teacher.DisplayName}" Grid.Column="3" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                                 </Grid>
                             </ViewCell>
                         </DataTemplate>

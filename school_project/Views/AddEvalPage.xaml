@@ -5,31 +5,38 @@
              Title="Add Evaluation">
 
     <ScrollView>
-        <VerticalStackLayout
-            Spacing="25"
-            Padding="30,0"
-            VerticalOptions="Center">
+        <Grid RowSpacing="25" Padding="30,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="75"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
 
-            <Picker 
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="250"/>
+                <ColumnDefinition Width="200"/>
+            </Grid.ColumnDefinitions>
+
+            <Picker
                 x:Name="activityPicker" 
-                Title="Select Activity">
-            </Picker>
+                Title="Select Activity"
+                Grid.Row="0" Grid.Column="0">
+                </Picker>
 
             <Entry 
                 x:Name="pointsEntry" 
-                Placeholder="Enter Points"/>
+                Placeholder="Enter Points"
+                Grid.Row="0" Grid.Column="1"
+                />
 
             <Button 
                 Text="Add Evaluation" 
-                Clicked="OnAddEvaluationClicked"/>
+                Clicked="OnAddEvaluationClicked"
+                Grid.Row="1" Grid.ColumnSpan="2"/>
 
-            <Button
-                x:Name="StudentsButton"
-                Text="Return to the list of students"
-                Clicked="OnStudentsButtonClicked"
-                HorizontalOptions="Center" />
-
-        </VerticalStackLayout>
+            <Label x:Name="Confirmation" VerticalTextAlignment="Center" HorizontalOptions="Center" Grid.Row="2" Grid.ColumnSpan="2"/>
+            
+        </Grid>
     </ScrollView>
 
 </ContentPage>
