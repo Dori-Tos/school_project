@@ -95,9 +95,10 @@ namespace school_project.Classes
             return actiList;
         }
 
-        public List<float> GetNotesList()
+        public List<string> GetNotesList()
         {
             List<float> coteList = new List<float>();
+            List<string> coteListv2 = new List<string>();
             List<string> actiList = new List<string>();
             List<int> denom = new List<int>();
 
@@ -121,12 +122,20 @@ namespace school_project.Classes
                 }
             }
             coteList = coteList.Zip(denom, (num, denom) => num / denom).ToList();
+
+            foreach(var valeur in coteList)
+            {
+                string valeurv2 = valeur.ToString("#.00");
+                coteListv2.Add(valeurv2);
+            }
+            /*
             Debug.WriteLine("Contenu de coteList :");
-            foreach (var valeur in coteList)
+            foreach (var valeur in coteListv2)
             {
                 Debug.WriteLine(valeur);
             }
-            return coteList;
+            */
+            return coteListv2;
         }
     }
 

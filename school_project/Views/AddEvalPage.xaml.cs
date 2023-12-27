@@ -13,13 +13,16 @@ public partial class AddEvalPage : ContentPage
 {
     private Student selectedStudent;
 
+    private int selectedStudentID;
+
     public ObservableCollection<Acti> Activities { get; set; }
 
-    public AddEvalPage(Student student)
+    public AddEvalPage(Student student, int studentID)
 	{
 		InitializeComponent();
 
         selectedStudent = student;
+        selectedStudentID = studentID;
 
         Activities = new ObservableCollection<Acti>();
 
@@ -56,7 +59,7 @@ public partial class AddEvalPage : ContentPage
         selectedStudent.Add(newEvaluation);
 
         DataManagerStudent dataManagerStudent = new DataManagerStudent();
-        //dataManagerStudent.ResendToJson(selectedStudent);
+        dataManagerStudent.ResendToJson(selectedStudent, selectedStudentID);
 
         pointsEntry.Text = string.Empty;
 

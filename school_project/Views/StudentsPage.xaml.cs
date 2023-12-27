@@ -13,6 +13,8 @@ public partial class StudentsPage : ContentPage
 
     public ObservableCollection<Student> Students { get; set; }
 
+    public int selectedID { get; set; }
+
     public StudentsPage()
 	{
 		InitializeComponent();
@@ -24,11 +26,17 @@ public partial class StudentsPage : ContentPage
         LoadStudents();
     }
     
-    private async void OnAddEvalButtonClicked(object sender, EventArgs e)
+    private async void OnStudentSelected(object sender, SelectedItemChangedEventArgs e)
     {
-        if (sender is Button button && button.CommandParameter is Student selectedStudent)
+        if (e.SelectedItem == null)
+        { 
+            return; 
+        }
+        if (e.SelectedItem is Student selectedStudent) 
         {
-            await Navigation.PushAsync(new AddEvalPage(selectedStudent));
+            int selectedStudentID = e.SelectedItemIndex;
+
+            await Navigation.PushAsync(new AddEvalPage(selectedStudent, selectedStudentID)); 
         }
     }
 
