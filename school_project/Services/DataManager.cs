@@ -8,6 +8,7 @@ using Newtonsoft.Json;
 using System.Diagnostics;
 using Microsoft.Maui.Storage;
 using System.Collections;
+//using Microsoft.Maui.Controls.Compatibility.Platform.iOS;
 //using Windows.UI.ViewManagement;
 //using static Android.Provider.MediaStore;
 
@@ -43,7 +44,7 @@ namespace school_project.Services
             SaveListToJson(listElement, elementType);
         }
 
-        private List<object> LoadListFromJson(Type objectType)
+        public List<object> LoadListFromJson(Type objectType)
         {
             string pathElement = SetPath(objectType);
 
@@ -95,7 +96,7 @@ namespace school_project.Services
     public class DataManagerStudent : DataManager
     {
         //Modified for student only to be used easily in GetStudentById()
-        private List<Student> LoadListFromJson()
+        private List<Student> LoadListStudentFromJson()
         {
             string pathElement = SetPath(typeof(Student));
 
@@ -121,7 +122,7 @@ namespace school_project.Services
 
         public Student GetStudentById(int index)
         {
-            List<Student> listStudents = LoadListFromJson();
+            List<Student> listStudents = LoadListStudentFromJson();
             if (index >= 0 && index < listStudents.Count)
             { 
                 Student student = (Student)listStudents[index];
@@ -130,16 +131,63 @@ namespace school_project.Services
             return null;
         }
 
+        private List<Acti> LoadListActiFromJson()
+        {
+            string pathElement = SetPath(typeof(Acti));
+
+            // Vérifier si le fichier existe
+            if (!File.Exists(pathElement))
+            {
+                return new List<Acti>();
+            }
+
+            string json = File.ReadAllText(pathElement);
+            return JsonConvert.DeserializeObject<List<Acti>>(json);
+        }
+
+        public Acti GetActiById(int index)
+        {
+            List<Acti> listActi = LoadListActiFromJson();
+            return listActi[index];
+        }
+
         public void ResendToJson(Student student, int index)
         {
-            List<Student> listStudents = LoadListFromJson();
+            List<Student> listStudents = LoadListStudentFromJson();
             listStudents[index] = student;
             SaveListToJson(listStudents, typeof(Student));
         }
         public void DeleteStudentById(int index)
         {
-            List<Student> listStudents = LoadListFromJson();
+            List<Student> listStudents = LoadListStudentFromJson();
             listStudents.RemoveAt(index);
         }
+
+        public string Tombola()
+        {
+            List<Student> listStudents = LoadListStudentFromJson();
+            List<Acti> evalList = LoadListActiFromJson();
+
+            Random rnd = new Random();
+
+            int studentIndex = rnd.Next(listStudents.Count);
+            int randomNote = rnd.Next(20);
+            int actiIndex = rnd.Next(evalList.Count);
+
+            Acti randomActi = evalList[actiIndex];
+            Student randomStudent = GetStudentById(studentIndex);
+
+            string randomStudentName = randomStudent.DisplayName;
+            string randomActiName = randomActi.DisplayName;
+
+            Cote coteRecord = new Cote(randomActi, randomNote);
+
+            randomStudent.Add(coteRecord);
+            ResendToJson(randomStudent, studentIndex);
+
+            return $"{randomStudentName} a obtenu la note de {randomNote}/20 pour l'activité {randomActiName} ";
+
+        }
+
     }
 }

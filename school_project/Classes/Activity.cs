@@ -21,6 +21,10 @@ namespace school_project.Classes
             this.code = code;
             this.teacher = teacher;
         }
+        public string DisplayName
+        {
+            get { return $"{name}"; }
+        }
         public void Save() { }
         public void Delete() { }
 

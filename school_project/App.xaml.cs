@@ -43,6 +43,8 @@ namespace school_project
             DataManager dataManager = new DataManager();
             DataManagerStudent dataManagerStudent = new DataManagerStudent();
 
+            Debug.WriteLine(dataManagerStudent.Tombola());
+
             //dataManager.AddToJson(YIP);
 
             //Action button Print Bulletin
