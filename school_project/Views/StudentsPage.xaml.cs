@@ -75,16 +75,20 @@ public partial class StudentsPage : ContentPage
     {
         var firstname = entryFirstName.Text;
         var lastname = entryLastName.Text;
-        List<Evaluation> evaluations = new List<Evaluation>();
 
-        var newStudent = new Student(firstname, lastname);
-        Students.Add(newStudent);
+        if (firstname != null && lastname != null)
+        {
+            List<Evaluation> evaluations = new List<Evaluation>();
 
-        DataManager dataManager = new DataManager();
-        dataManager.AddToJson(newStudent);
+            var newStudent = new Student(firstname, lastname);
+            Students.Add(newStudent);
+
+            DataManager dataManager = new DataManager();
+            dataManager.AddToJson(newStudent);
 
 
-        entryFirstName.Text = string.Empty;
-        entryLastName.Text = string.Empty;
+            entryFirstName.Text = string.Empty;
+            entryLastName.Text = string.Empty;
+        }
     }
 }

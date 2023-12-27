@@ -61,7 +61,7 @@ namespace school_project.Services
         private void SaveListToJson(List<object> ListElement, Type objectType)
         {
             string PathElement = SetPath(objectType);
-            Debug.WriteLine(PathElement);
+            //Debug.WriteLine(PathElement);
             // Écrire la liste dans le fichier JSON
             string updatedJson = JsonConvert.SerializeObject(ListElement, Formatting.Indented);
             File.WriteAllText(PathElement, updatedJson);

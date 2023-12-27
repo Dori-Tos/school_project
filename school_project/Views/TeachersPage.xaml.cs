@@ -53,14 +53,17 @@ public partial class TeachersPage : ContentPage
         var lastname = entryLastName.Text;
         var salary = int.TryParse(entrySalary.Text, out int parsedSalary) ? parsedSalary : 0;
 
-        var newTeacher = new Teacher(firstname, lastname, salary);
-        Teachers.Add(newTeacher);
+        if (firstname != null && lastname != null)
+        {
+            var newTeacher = new Teacher(firstname, lastname, salary);
+            Teachers.Add(newTeacher);
 
-        DataManager dataManager = new DataManager();
-        dataManager.AddToJson(newTeacher);
+            DataManager dataManager = new DataManager();
+            dataManager.AddToJson(newTeacher);
 
-        entryFirstName.Text = string.Empty;
-        entryLastName.Text = string.Empty;
-        entrySalary.Text = string.Empty;
+            entryFirstName.Text = string.Empty;
+            entryLastName.Text = string.Empty;
+            entrySalary.Text = string.Empty;
+        }
     }
 }

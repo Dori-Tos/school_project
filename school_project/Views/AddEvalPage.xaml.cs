@@ -15,7 +15,7 @@ public partial class AddEvalPage : ContentPage
 
     private int selectedStudentID;
 
-    public ObservableCollection<Acti> Activities { get; set; }
+    public ObservableCollection<string> Activities { get; set; }
 
     public AddEvalPage(Student student, int studentID)
 	{
@@ -24,7 +24,7 @@ public partial class AddEvalPage : ContentPage
         selectedStudent = student;
         selectedStudentID = studentID;
 
-        Activities = new ObservableCollection<Acti>();
+        Activities = new ObservableCollection<string>();
 
         string relativeActiPath = System.IO.Path.Combine(FileSystem.AppDataDirectory, "acti.json");
 
@@ -34,7 +34,7 @@ public partial class AddEvalPage : ContentPage
 
         foreach (var activity in activities)
         {
-            Activities.Add(activity);
+            Activities.Add(activity.DisplayName);
         }
 
         activityPicker.ItemsSource = Activities;
