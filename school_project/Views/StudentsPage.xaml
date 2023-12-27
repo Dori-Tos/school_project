@@ -4,7 +4,7 @@
              x:Class="school_project.Views.StudentsPage"
              Title="List of Students">
 
-    <Grid RowSpacing="0" Padding="20">
+    <Grid RowSpacing="0" Padding="20" HorizontalOptions="Center">
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
             <RowDefinition Height="*"/>
@@ -34,7 +34,7 @@
 
         <ScrollView Grid.Row="1" Grid.ColumnSpan="3">
             <VerticalStackLayout Spacing="25" Padding="30,0">
-                <ListView x:Name="ListStudents">
+                <ListView x:Name="ListStudents" ItemSelected="OnStudentSelected">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
@@ -47,12 +47,14 @@
                                     </Grid.ColumnDefinitions>
                                     <Label Text="{Binding firstname}" Grid.Column="0" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                                     <Label Text="{Binding lastname}" Grid.Column="1" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
-                                    <Button
-                                            x:Name="AddEvalButton"
-                                            Text="Add an Evaluation"
-                                            CommandParameter="{Binding .}"
-                                            Clicked="OnAddEvalButtonClicked"
-                                            Grid.Column="2"/>
+
+                                    <Border Stroke="DarkBlue" StrokeThickness="4" Background="Black"
+                                            StrokeShape="RoundRectangle 15,15,15,15" Padding="16,8" HorizontalOptions="Center"
+                                            Grid.Column="2">
+                                        
+                                        <Label Text="Add an Evaluation" FontAttributes="Bold"  HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+
+                                    </Border>
                                     <Button
                                             x:Name="BulletinButton"
                                             Text="Bulletin"

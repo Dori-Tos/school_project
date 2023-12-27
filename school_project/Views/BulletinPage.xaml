@@ -5,19 +5,24 @@
              Title="Bulletin">
 
     <ScrollView>
-        <Grid RowSpacing="0" Padding="20">
+        <Grid RowSpacing="0" Padding="20" HorizontalOptions="Center">
 
             <Grid.RowDefinitions>
                 <RowDefinition Height="30"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="200" />
                 <ColumnDefinition Width="200" />
             </Grid.ColumnDefinitions>
+            <Label x:Name="StudentDisplayName" Grid.Row="0" Grid.ColumnSpan="2" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
 
-            <Label Grid.Row="0" Grid.Column="0" Text="Activities" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
-            <ListView x:Name="ListActivities" Grid.Row="1" Grid.Column="0">
+            <Label Grid.Row="1" Grid.Column="0" Text="Activities" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+            <ListView x:Name="ListActivities" Grid.Row="2" Grid.Column="0">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -27,8 +32,8 @@
                 </ListView.ItemTemplate>
             </ListView>
 
-            <Label Grid.Row="0" Grid.Column="1" Text="Notes" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
-            <ListView x:Name="ListNotes" Grid.Row="1" Grid.Column="1">
+            <Label Grid.Row="1" Grid.Column="1" Text="Notes" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+            <ListView x:Name="ListNotes" Grid.Row="2" Grid.Column="1">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -37,6 +42,9 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
+
+            <Label Grid.Row="4" Grid.ColumnSpan="2" Text="Average" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+            <Label x:Name="StudentDisplayAverage" Grid.Row="5" Grid.ColumnSpan="2" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
         </Grid>
     </ScrollView>
 </ContentPage>

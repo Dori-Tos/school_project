@@ -11,11 +11,15 @@ public partial class BulletinPage : ContentPage
 {
     private Student selectedStudent;
 
+    private string selectedStudentName {  get; set; }
+
+    private double selectedStudentAverage { get; set; }
+
     public ObservableCollection<Evaluation> Evaluations { get; set; }
 
     public List<string> studentActiList { get; set; }
 
-    public List<float> studentNotesList { get; set; }
+    public List<string> studentNotesList { get; set; }
 
     public BulletinPage(Student student)
     {
@@ -23,15 +27,23 @@ public partial class BulletinPage : ContentPage
 
         selectedStudent = student;
 
+        selectedStudentName = selectedStudent.DisplayName;
+
         studentActiList = student.GetActivitiesList();
 
         studentNotesList = student.GetNotesList();
 
         //Evaluations = new ObservableCollection<Evaluation>();
 
+        StudentDisplayName.Text = selectedStudentName;
+
         ListActivities.ItemsSource = studentActiList;
 
         ListNotes.ItemsSource = studentNotesList;
+
+        selectedStudentAverage = selectedStudent.Average();
+
+        StudentDisplayAverage.Text = selectedStudentAverage.ToString("#.00");
 
         //LoadEvaluations();
     }
