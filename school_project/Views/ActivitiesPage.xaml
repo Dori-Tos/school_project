@@ -4,29 +4,54 @@
              x:Class="school_project.Views.ActivitiesPage"
              Title="ActivitiesPage">
 
-    <ScrollView>
-        <VerticalStackLayout
-            Spacing="25"
-            Padding="30,0"
-            VerticalOptions="Start">
+    <Grid RowSpacing="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
 
-            <ListView x:Name="ListActivities">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <StackLayout Orientation="Horizontal">
-                                <Label Text="{Binding ECTS}" />
-                                <Label Text="{Binding name}" Margin="5,0,0,0"/>
-                                <Label Text="{Binding code}" Margin="5,0,0,0"/>
-                                <Label Text="{Binding teacher.DisplayName}" Margin="5,0,0,0"/>
+        <ScrollView Grid.Row="0">
+            <VerticalStackLayout Spacing="25" Padding="30,0">
+                <Grid ColumnSpacing="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="125" />
+                        <ColumnDefinition Width="75" />
+                        <ColumnDefinition Width="100" />
+                        <ColumnDefinition Width="75" />
+                    </Grid.ColumnDefinitions>
+                    <Label Text="N° of the Activity" Grid.Column="0" HorizontalTextAlignment="Center"/>
+                    <Label Text="Name" Grid.Column="1" HorizontalTextAlignment="Center"/>
+                    <Label Text="Code" Grid.Column="2" HorizontalTextAlignment="Center"/>
+                    <Label Text="Teacher" Grid.Column="3" HorizontalTextAlignment="Center"/>
+                </Grid>
+            </VerticalStackLayout>
+        </ScrollView>
 
-                            </StackLayout>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Spacing="25" Padding="30,0" VerticalOptions="Start">
+                <ListView x:Name="ListActivities">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid ColumnSpacing="10">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="125" />
+                                        <ColumnDefinition Width="75" />
+                                        <ColumnDefinition Width="100" />
+                                        <ColumnDefinition Width="75" />
+                                    </Grid.ColumnDefinitions>
+                                    <Label Text="{Binding ECTS}" Grid.Column="0" HorizontalTextAlignment="Center"/>
+                                    <Label Text="{Binding name}" Margin="5,0,0,0" Grid.Column="1" HorizontalTextAlignment="Center"/>
+                                    <Label Text="{Binding code}" Margin="5,0,0,0" Grid.Column="2" HorizontalTextAlignment="Center"/>
+                                    <Label Text="{Binding teacher.DisplayName}" Margin="5,0,0,0" Grid.Column="3" HorizontalTextAlignment="Center"/>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
 
-        </VerticalStackLayout>
-    </ScrollView>
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
 
 </ContentPage>

@@ -42,7 +42,7 @@ namespace school_project.Classes
 
     public class Student : Person
     {
-        private List<Evaluation> cours = new List<Evaluation>();
+        public List<Evaluation> cours = new List<Evaluation>();
         private double credits = 0;
         private double avg = 0;
 

@@ -4,28 +4,63 @@
              x:Class="school_project.Views.TeachersPage"
              Title="TeachersPage">
 
-    <StackLayout>
-        <ListView x:Name="ListTeachers">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <StackLayout Orientation="Horizontal">
-                            <Label Text="{Binding firstname}" />
-                            <Label Text="{Binding lastname}" Margin="5,0,0,0"/>
-                            <Label Text="{Binding salary}" Margin="5,0,0,0"/>
-                        </StackLayout>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+    <Grid RowSpacing="0" Padding="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
 
-        <Entry x:Name="entryFirstName" Placeholder="Firstname"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
 
-        <Entry x:Name="entryLastName" Placeholder="Lastname"/>
+        <ScrollView Grid.Row="0" Grid.ColumnSpan="4">
+            <VerticalStackLayout Spacing="25" Padding="30,0">
+                <Grid ColumnSpacing="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="125" />
+                        <ColumnDefinition Width="125" />
+                        <ColumnDefinition Width="125" />
+                    </Grid.ColumnDefinitions>
+                    <Label Text="Firstname" Grid.Column="0" HorizontalTextAlignment="Center"/>
+                    <Label Text="Lastname" Grid.Column="1" HorizontalTextAlignment="Center"/>
+                    <Label Text="Salary" Grid.Column="2" HorizontalTextAlignment="Center"/>
+                </Grid>
+            </VerticalStackLayout>
+        </ScrollView>
 
-        <Entry x:Name="entrySalary" Placeholder="Salary" Keyboard="Numeric"/>
+        <ScrollView Grid.Row="1" Grid.ColumnSpan="4">
+            <VerticalStackLayout Spacing="25" Padding="30,0">
+                <ListView x:Name="ListTeachers">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid ColumnSpacing="10">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="125" />
+                                        <ColumnDefinition Width="125" />
+                                        <ColumnDefinition Width="125" />
+                                    </Grid.ColumnDefinitions>
+                                    <Label Text="{Binding firstname}" Grid.Column="0" HorizontalTextAlignment="Center"/>
+                                    <Label Text="{Binding lastname}" Margin="5,0,0,0" Grid.Column="1" HorizontalTextAlignment="Center"/>
+                                    <Label Text="{Binding salary}" Margin="5,0,0,0" Grid.Column="2" HorizontalTextAlignment="Center"/>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </VerticalStackLayout>
+        </ScrollView>
 
-        <Button Text="Add New Teacher" Clicked="AddNewTeacherClicked"/>
-    </StackLayout>
+        <Entry x:Name="entryFirstName" Placeholder="Firstname" Grid.Column="0" Grid.Row="2"/>
+        <Entry x:Name="entryLastName" Placeholder="Lastname" Grid.Column="1" Grid.Row="2"/>
+        <Entry x:Name="entrySalary" Placeholder="Salary" Keyboard="Numeric" Grid.Column="2" Grid.Row="2"/>
+        <Button Text="Add New Teacher" Clicked="AddNewTeacherClicked" Grid.Column="3" Grid.Row="2"/>
+
+    </Grid>
 
 </ContentPage>

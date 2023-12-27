@@ -26,9 +26,7 @@ public partial class StudentsPage : ContentPage
 
     private async void OnAddEvalButtonClicked(object sender, EventArgs e)
     {
-        Student selectedStudent = GetSelectedStudent();
-
-        if (selectedStudent != null)
+        if (sender is Button button && button.CommandParameter is Student selectedStudent)
         {
             await Navigation.PushAsync(new AddEvalPage(selectedStudent));
         }
@@ -36,9 +34,7 @@ public partial class StudentsPage : ContentPage
 
     private async void OnBulletinButtonClicked(object sender, EventArgs e)
     {
-        Student selectedStudent = GetSelectedStudent();
-
-        if (selectedStudent != null)
+        if (sender is Button button && button.CommandParameter is Student selectedStudent)
         {
             await Navigation.PushAsync(new BulletinPage(selectedStudent));
         }
@@ -66,14 +62,6 @@ public partial class StudentsPage : ContentPage
         }
 
     }
-
-    private Student GetSelectedStudent()
-    {
-        // Implement logic to get the selected student
-        // This depends on your UI design
-        return null; // Placeholder
-    }
-
 
     private void AddNewStudentClicked(object sender, EventArgs e)
     {

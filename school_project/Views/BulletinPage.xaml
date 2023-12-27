@@ -6,22 +6,22 @@
 
     <ScrollView>
         <VerticalStackLayout
-    Spacing="25"
-    Padding="30,0"
-    VerticalOptions="Center">
+            Spacing="25"
+            Padding="30,0"
+            VerticalOptions="Start">
 
-            <Label
-        Text="StudentsList"
-        SemanticProperties.HeadingLevel="Level1"
-        FontSize="24"
-        HorizontalOptions="Center" />
-
-            <Button
-        x:Name="StudentsButton"
-        Text="Return to the list of students"
-        Clicked="OnStudentsButtonClicked"
-        HorizontalOptions="Center" />
-
+            <ListView x:Name="ListEvaluations">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding activity.name}" />
+                                <Label Text="{Binding Note}" Margin="5,0,0,0"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </VerticalStackLayout>
     </ScrollView>
     
