@@ -60,19 +60,24 @@ namespace school_project.Classes
         public void Add(Evaluation new_evaluation)
         {
             cours.Add(new_evaluation);
-            Debug.WriteLine(new_evaluation.activity.name);
         }
 
         public double Average()
         {
             for (int i = 0; i < cours.Count; i++)
             {
-                credits = credits + cours[i].activity.ECTS;
+                if (cours[i] != null && cours[i].activity != null)
+                {
+                    credits = credits + cours[i].activity.ECTS;
+                }
             }
 
             for (int i = 0; i < cours.Count; i++)
             {
-                avg = avg + cours[i].Note() * (cours[i].activity.ECTS / credits);
+                if (cours[i] != null && cours[i].activity != null)
+                {
+                    avg = avg + cours[i].Note() * (cours[i].activity.ECTS / credits);
+                }
             }
             return (avg);
         }
@@ -82,16 +87,16 @@ namespace school_project.Classes
             List<string> actiList = new List<string>();
             for (int i = 0; i < cours.Count; i++)
             {
-                if (!actiList.Contains(cours[i].activity.name))
+                if (cours[i] != null && cours[i].activity != null && !actiList.Contains(cours[i].activity.name))
                 {
                     actiList.Add(cours[i].activity.name.ToString());
                 }
             }
             Debug.WriteLine("Contenu de coteList :");
-            foreach (var valeur in actiList)
-            {
-                Debug.WriteLine(valeur);
-            }
+            //foreach (var valeur in actiList)
+            //{
+            //    Debug.WriteLine(valeur);
+            //}
             return actiList;
         }
 
@@ -104,21 +109,23 @@ namespace school_project.Classes
 
             for (int i = 0; i < cours.Count; i++)
             {
-                if (!actiList.Contains(cours[i].activity.name))
-                {
-                    //Debug.WriteLine("DIFF");
-                    actiList.Add(cours[i].activity.name.ToString());
-                    coteList.Add(cours[i].Note());
-                    denom.Add(1);
-                }
-                else
-                {
-                    //Debug.WriteLine("SAME");
-                    var doublon = cours[i].activity.name;
-                    int index = actiList.FindIndex(item => item == doublon);
-                    coteList[index] += cours[i].Note();
-                    Debug.WriteLine(cours[i].Note());
-                    denom[index] += 1;
+                if (cours[i] != null && cours[i].activity != null) {
+                    if (actiList.Contains(cours[i].activity.name))
+                    {
+                        //Debug.WriteLine("DIFF");
+                        actiList.Add(cours[i].activity.name.ToString());
+                        coteList.Add(cours[i].Note());
+                        denom.Add(1);
+                    }
+                    else
+                    {
+                        //Debug.WriteLine("SAME");
+                        var doublon = cours[i].activity.name;
+                        int index = actiList.FindIndex(item => item == doublon);
+                        coteList[index] += cours[i].Note();
+                        Debug.WriteLine(cours[i].Note());
+                        denom[index] += 1;
+                    }
                 }
             }
             coteList = coteList.Zip(denom, (num, denom) => num / denom).ToList();

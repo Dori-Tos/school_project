@@ -15,6 +15,8 @@ public partial class AddEvalPage : ContentPage
 
     private int selectedStudentID;
 
+    private List<Acti> activities;
+
     public ObservableCollection<string> Activities { get; set; }
 
     public AddEvalPage(Student student, int studentID)
@@ -30,7 +32,7 @@ public partial class AddEvalPage : ContentPage
 
         string jsonContent = File.ReadAllText(relativeActiPath);
 
-        var activities = JsonConvert.DeserializeObject<List<Acti>>(jsonContent);        
+        activities = JsonConvert.DeserializeObject<List<Acti>>(jsonContent);        
 
         foreach (var activity in activities)
         {
@@ -43,9 +45,11 @@ public partial class AddEvalPage : ContentPage
     private void OnAddEvaluationClicked(object sender, EventArgs e)
     {
         var evaluationInput = pointsEntry.Text;
-        var selectedActivity = activityPicker.SelectedItem as Acti;
+        var selectedActivityID = activityPicker.SelectedIndex;
 
-        Evaluation newEvaluation = null;
+        var selectedActivity = activities[selectedActivityID];
+
+        Evaluation newEvaluation = new Evaluation(null);
 
         if (int.TryParse(evaluationInput, out int numericNote))
         {
