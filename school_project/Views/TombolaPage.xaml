@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="school_project.Views.TombolaPage"
-             Title="TombolaPage">
+             Title="Tombola">
     <ScrollView>
         <VerticalStackLayout
         Spacing="25"
@@ -10,10 +10,12 @@
         VerticalOptions="Center">
 
             <Label
-            Text="Welcome to the Tombola!"
+            Text="Welcome to the Tombola !"
             SemanticProperties.HeadingLevel="Level1"
-            FontSize="32"
+            FontSize="26"
             HorizontalOptions="Center" />
+
+            <Label x:Name="TombolaDisplay" HorizontalOptions="Center" FontAttributes="Bold" FontSize="30"/>
 
             <Button
             x:Name="HomeButton"

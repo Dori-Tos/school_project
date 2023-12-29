@@ -3,37 +3,50 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="school_project.Views.ActivitiesPage"
              Title="List of Activities">
-    
-    <ScrollView>
-        <Grid RowSpacing="0" Padding="20" HorizontalOptions="Center">
-            
-            <Grid.RowDefinitions>
-                <RowDefinition Height="40"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="125" />
-                <ColumnDefinition Width="75" />
-                <ColumnDefinition Width="100" />
-                <ColumnDefinition Width="75" />
-            </Grid.ColumnDefinitions>
 
-            <Label Text="N° of the Activity" Grid.Column="0" HorizontalTextAlignment="Center" Grid.Row="0"/>
-            <Label Text="Name" Grid.Column="1" HorizontalTextAlignment="Center" Grid.Row="0"/>
-            <Label Text="Code" Grid.Column="2" HorizontalTextAlignment="Center" Grid.Row="0"/>
-            <Label Text="Teacher" Grid.Column="3" HorizontalTextAlignment="Center" Grid.Row="0"/>
+    <Grid RowSpacing="0" Padding="20" HorizontalOptions="Center">
 
-            <ListView x:Name="ListActivities"  RowHeight="35" Grid.Row="1" Grid.ColumnSpan="4">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <ScrollView Grid.Row="0" Grid.ColumnSpan="5" HorizontalOptions="Center">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="75" />
+                    <ColumnDefinition Width="125" />
+                    <ColumnDefinition Width="100" />
+                    <ColumnDefinition Width="125" />
+                </Grid.ColumnDefinitions>
+
+                <Label Text="ECTS" Grid.Column="0" HorizontalTextAlignment="Center" Grid.Row="0"/>
+                <Label Text="Name" Grid.Column="1" HorizontalTextAlignment="Center" Grid.Row="0"/>
+                <Label Text="Code" Grid.Column="2" HorizontalTextAlignment="Center" Grid.Row="0"/>
+                <Label Text="Teacher" Grid.Column="3" HorizontalTextAlignment="Center" Grid.Row="0"/>
+            </Grid>
+        </ScrollView>
+
+        <ScrollView Grid.Row="1" Grid.ColumnSpan="5" HorizontalOptions="Center">
+            <ListView x:Name="ListActivities"  RowHeight="35">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
                             <Grid>
                                 <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="75" />
                                     <ColumnDefinition Width="125" />
-                                    <ColumnDefinition Width="75" />
                                     <ColumnDefinition Width="100" />
-                                    <ColumnDefinition Width="75" />
+                                    <ColumnDefinition Width="125" />
                                 </Grid.ColumnDefinitions>
                                 <Label Text="{Binding ECTS}" Grid.Column="0" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                                 <Label Text="{Binding name}" Grid.Column="1" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
@@ -44,7 +57,14 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-        </Grid>
-    </ScrollView>
+        </ScrollView>
+
+        <Entry x:Name="entryECTS" Placeholder="ECTS" Keyboard="Numeric" Grid.Column="0" Grid.Row="2"/>
+        <Entry x:Name="entryName" Placeholder="Name" Grid.Column="1" Grid.Row="2"/>
+        <Entry x:Name="entryCode" Placeholder="Code" Grid.Column="2" Grid.Row="2"/>
+        <Picker x:Name="TeacherPicker" Title="Select Teacher" Grid.Column="3" Grid.Row="2"></Picker>
+        <Button Text="Add New Activity" Clicked="AddNewActivityClicked" Grid.Column="4" Grid.Row="2"/>
+
+    </Grid>
 
 </ContentPage>

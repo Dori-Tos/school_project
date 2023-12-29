@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="school_project.Views.AddEvalPage"
-             Title="Add Evaluation">
+             Title="Add an Evaluation">
 
     <ScrollView>
         <Grid RowSpacing="25" Padding="30,0">
@@ -18,7 +18,7 @@
             </Grid.ColumnDefinitions>
 
             <Picker
-                x:Name="activityPicker" 
+                x:Name="activityPicker"
                 Title="Select Activity"
                 Grid.Row="0" Grid.Column="0">
                 </Picker>

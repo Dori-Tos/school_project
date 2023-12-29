@@ -36,14 +36,4 @@
     ContentTemplate="{DataTemplate views:TombolaPage}"
     Route="TombolaPage" />
 
-    <ShellContent
-    Title="Add an Evaluation"
-    ContentTemplate="{DataTemplate views:AddEvalPage}"
-    Route="AddEvalPage" />
-
-    <ShellContent
-    Title="Bulletin"
-    ContentTemplate="{DataTemplate views:BulletinPage}"
-    Route="BulletinPage" />
-
 </Shell>
