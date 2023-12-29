@@ -86,7 +86,7 @@ public partial class ActivitiesPage : ContentPage
         var code = entryCode.Text;
         var selectedTeacherID = TeacherPicker.SelectedIndex;
 
-        var selectedTeacher = teachers[selectedTeacherID];
+        Teacher selectedTeacher = teachers[selectedTeacherID];
 
         if (name != null && code != null)
         {

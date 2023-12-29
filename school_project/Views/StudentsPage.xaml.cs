@@ -58,10 +58,14 @@ public partial class StudentsPage : ContentPage
 
             var students = JsonConvert.DeserializeObject<List<Student>>(jsonContent);
 
-            foreach (var student in students)
+            if (students.Count > 0)
             {
-                Students.Add(student);
+                foreach (var student in students)
+                {
+                    Students.Add(student);
+                }
             }
+
         }
 
         catch (Exception ex)

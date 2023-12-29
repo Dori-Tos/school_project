@@ -14,6 +14,7 @@ public partial class AddEvalPage : ContentPage
     private Student selectedStudent;
 
     private int selectedStudentID;
+    private DataManagerActi dataManagerActi = new DataManagerActi();
 
     public ObservableCollection<string> Activities { get; set; }
 
@@ -44,16 +45,19 @@ public partial class AddEvalPage : ContentPage
     {
         var evaluationInput = pointsEntry.Text;
         var selectedActivity = activityPicker.SelectedItem as Acti;
+        int selectedActivityId = activityPicker.SelectedIndex;
+
+        Debug.WriteLine(selectedActivityId);
 
         Evaluation newEvaluation = null;
 
         if (int.TryParse(evaluationInput, out int numericNote))
         {
-            newEvaluation = new Cote(selectedActivity, numericNote);
+            newEvaluation = new Cote(dataManagerActi.GetActiById(selectedActivityId), numericNote);
         }
         else
         {
-            newEvaluation = new Appreciation(selectedActivity, evaluationInput);
+            newEvaluation = new Appreciation(dataManagerActi.GetActiById(selectedActivityId), evaluationInput);
         }
 
         selectedStudent.Add(newEvaluation);

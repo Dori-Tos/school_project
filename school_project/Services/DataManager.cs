@@ -190,4 +190,74 @@ namespace school_project.Services
         }
 
     }
+    public class DataManagerActi : DataManager
+    {
+        private List<Acti> LoadListActiFromJson()
+        {
+            string pathElement = SetPath(typeof(Acti));
+
+            // Vérifier si le fichier existe
+            if (!File.Exists(pathElement))
+            {
+                return new List<Acti>();
+            }
+
+            string json = File.ReadAllText(pathElement);
+            return JsonConvert.DeserializeObject<List<Acti>>(json);
+        }
+
+        private void SaveListToJson(List<Acti> ListElement, Type objectType)
+        {
+            string PathElement = SetPath(objectType);
+
+            // Écrire la liste dans le fichier JSON
+            string updatedJson = JsonConvert.SerializeObject(ListElement, Formatting.Indented);
+            File.WriteAllText(PathElement, updatedJson);
+        }
+
+        public Acti GetActiById(int index)
+        {
+            List<Acti> listActi = LoadListActiFromJson();
+            Acti acti = (Acti)listActi[index];
+
+            return acti;
+        }
+
+        public void ResendToJson(Acti acti, int index)
+        {
+            List<Acti> listActi = LoadListActiFromJson();
+            listActi[index] = acti;
+            SaveListToJson(listActi, typeof(Acti));
+        }
+
+    }
+
+    public class DataManagerTeacher : DataManager
+    {
+        private List<Teacher> LoadListTeacherFromJson()
+        {
+            string pathElement = SetPath(typeof(Acti));
+
+            // Vérifier si le fichier existe
+            if (!File.Exists(pathElement))
+            {
+                return new List<Teacher>();
+            }
+
+            string json = File.ReadAllText(pathElement);
+            return JsonConvert.DeserializeObject<List<Teacher>>(json);
+        }
+
+        private void SaveListToJson(List<Teacher> ListElement, Type objectType)
+        {
+            string PathElement = SetPath(objectType);
+
+            // Écrire la liste dans le fichier JSON
+            string updatedJson = JsonConvert.SerializeObject(ListElement, Formatting.Indented);
+            File.WriteAllText(PathElement, updatedJson);
+        }
+
+
+    }
+
 }
