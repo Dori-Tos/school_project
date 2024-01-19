@@ -121,7 +121,12 @@ namespace school_project.Classes
                     {
                         //Debug.WriteLine("SAME");
                         var doublon = cours[i].activity.name;
+                        Debug.WriteLine(actiList);
+                        Debug.WriteLine(coteList);
+                        Debug.WriteLine(doublon);
+                        Debug.WriteLine(doublon.ToString());
                         int index = actiList.FindIndex(item => item == doublon);
+                        Debug.WriteLine(index);
                         coteList[index] += cours[i].Note();
                         Debug.WriteLine(cours[i].Note());
                         denom[index] += 1;
