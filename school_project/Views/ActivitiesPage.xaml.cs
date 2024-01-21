@@ -5,6 +5,8 @@ using System.Collections.ObjectModel;
 using System.IO;
 using System.Diagnostics.Tracing;
 using school_project.Services;
+using System.Diagnostics;
+using Microsoft.Maui.Controls;
 
 namespace school_project.Views;
 
@@ -30,10 +32,19 @@ public partial class ActivitiesPage : ContentPage
 
         TeacherPicker.ItemsSource = Teachers;
 
+        Debug.WriteLine("Chargement de la page !!!!!!!!!!!      !!!!!");
+
         LoadActivities();
 
         LoadTeachers();
 	}
+
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+        LoadTeachers();
+        Debug.WriteLine("Chargement de la page !!!!!!!!!!!      !!!!!");
+    }
 
     private void LoadActivities()
     {
@@ -65,8 +76,9 @@ public partial class ActivitiesPage : ContentPage
             string relativeTeacherPath = System.IO.Path.Combine(FileSystem.AppDataDirectory, "teacher.json");
 
             string jsonContent = File.ReadAllText(relativeTeacherPath);
-
+            
             teachers = JsonConvert.DeserializeObject<List<Teacher>>(jsonContent);
+            
 
             foreach (var teacher in teachers)
             {
@@ -85,6 +97,10 @@ public partial class ActivitiesPage : ContentPage
         var name = entryName.Text;
         var code = entryCode.Text;
         var selectedTeacherID = TeacherPicker.SelectedIndex;
+        Debug.WriteLine(selectedTeacherID);
+        Debug.WriteLine(teachers.Count());
+
+        LoadTeachers();
 
         Teacher selectedTeacher = teachers[selectedTeacherID];
 
