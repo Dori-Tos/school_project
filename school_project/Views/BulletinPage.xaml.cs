@@ -29,17 +29,17 @@ public partial class BulletinPage : ContentPage
 
         studentNotesList = new List<string>();
 
+        LoadEvaluations(student);
+
         StudentDisplayName.Text = selectedStudentName;
 
         ListActivities.ItemsSource = studentActiList;
 
         ListNotes.ItemsSource = studentNotesList;
 
-        selectedStudentAverage = new double();
-
         StudentDisplayAverage.Text = selectedStudentAverage.ToString("#.00");
 
-        LoadEvaluations(student);
+        
     }
 
     private void LoadEvaluations(Student student)

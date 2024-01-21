@@ -92,11 +92,6 @@ namespace school_project.Classes
                     actiList.Add(cours[i].activity.name.ToString());
                 }
             }
-            //Debug.WriteLine("Contenu de coteList :");
-            //foreach (var valeur in actiList)
-            //{
-            //    Debug.WriteLine(valeur);
-            //}
             return actiList;
         }
 
