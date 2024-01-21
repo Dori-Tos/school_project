@@ -9,8 +9,6 @@ namespace school_project.Views;
 
 public partial class BulletinPage : ContentPage
 {
-    private Student selectedStudent;
-
     private string selectedStudentName {  get; set; }
 
     private double selectedStudentAverage { get; set; }
@@ -25,15 +23,11 @@ public partial class BulletinPage : ContentPage
     {
         InitializeComponent();
 
-        selectedStudent = student;
+        selectedStudentName = student.DisplayName;
 
-        selectedStudentName = selectedStudent.DisplayName;
+        studentActiList = new List<string>();
 
-        studentActiList = student.GetActivitiesList();
-
-        studentNotesList = student.GetNotesList();
-
-        //Evaluations = new ObservableCollection<Evaluation>();
+        studentNotesList = new List<string>();
 
         StudentDisplayName.Text = selectedStudentName;
 
@@ -41,29 +35,19 @@ public partial class BulletinPage : ContentPage
 
         ListNotes.ItemsSource = studentNotesList;
 
-        selectedStudentAverage = selectedStudent.Average();
+        selectedStudentAverage = new double();
 
         StudentDisplayAverage.Text = selectedStudentAverage.ToString("#.00");
 
-        //LoadEvaluations();
+        LoadEvaluations(student);
     }
 
-    private void LoadEvaluations()
+    private void LoadEvaluations(Student student)
     {
-        try
-        {
-            var evalutions = selectedStudent.cours;
+        studentActiList = student.GetActivitiesList();
 
-            foreach (var evaluation in evalutions)
-            {
-                Evaluations.Add(evaluation);
-            }
-        }
+        studentNotesList = student.GetNotesList();
 
-        catch (Exception ex)
-        {
-            Console.WriteLine("Error loading evaluations from JSON: {ex.Message}");
-        }
-
+        selectedStudentAverage = student.Average();
     }
 }
