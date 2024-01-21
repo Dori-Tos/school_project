@@ -46,26 +46,26 @@ public partial class AddEvalPage : ContentPage
     private void OnAddEvaluationClicked(object sender, EventArgs e)
     {
         var evaluationInput = pointsEntry.Text;
-<<<<<<< HEAD
+
         var selectedActivity = activityPicker.SelectedItem as Acti;
         int selectedActivityId = activityPicker.SelectedIndex;
 
         Debug.WriteLine(selectedActivityId);
-=======
-        var selectedActivityID = activityPicker.SelectedIndex;
->>>>>>> bc4ffd1305217a672640dd8adf2fe0d58c1bfa09
 
-        var selectedActivity = activities[selectedActivityID];
+        var selectedActivityID = activityPicker.SelectedIndex;
+
+
+        //var selectedActivity = activities[selectedActivityID];
 
         Evaluation newEvaluation = new Evaluation(null);
 
         if (int.TryParse(evaluationInput, out int numericNote))
         {
-            newEvaluation = new Cote(dataManagerActi.GetActiById(selectedActivityId), numericNote);
+            newEvaluation = new Cote(dataManagerActi.GetElementById<Acti>(selectedActivityId), numericNote);
         }
         else
         {
-            newEvaluation = new Appreciation(dataManagerActi.GetActiById(selectedActivityId), evaluationInput);
+            newEvaluation = new Appreciation(dataManagerActi.GetElementById<Acti>(selectedActivityId), evaluationInput);
         }
 
         selectedStudent.Add(newEvaluation);

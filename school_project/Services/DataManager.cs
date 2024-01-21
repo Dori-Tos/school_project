@@ -8,6 +8,7 @@ using Newtonsoft.Json;
 using System.Diagnostics;
 using Microsoft.Maui.Storage;
 using System.Collections;
+using System.Reflection;
 //using Microsoft.Maui.Controls.Compatibility.Platform.iOS;
 //using Windows.UI.ViewManagement;
 //using static Android.Provider.MediaStore;
@@ -29,26 +30,40 @@ namespace school_project.Services
         private string relativeActiPath = System.IO.Path.Combine(FileSystem.AppDataDirectory, "acti.json");
         private string relativeUnexpectedPath = System.IO.Path.Combine(FileSystem.AppDataDirectory, "unexpectedObjectType.json");
 
-        public void AddToJson(Object schoolElement)
+
+        public void EnsureJsonFilesExist()
         {
-            // Obtenir le type de l'objet
-            Type elementType = schoolElement.GetType();
+            EnsureFileExistsAndNotEmpty(relativeTeacherPath);
+            EnsureFileExistsAndNotEmpty(relativeStudentPath);
+            EnsureFileExistsAndNotEmpty(relativeActiPath);
+            EnsureFileExistsAndNotEmpty(relativeUnexpectedPath);
+        }
 
-            // Charger la liste existante depuis le fichier JSON
-            List<object> listElement = LoadListFromJson(elementType);
+        private void EnsureFileExistsAndNotEmpty(string filePath)
+        {
+            if (!File.Exists(filePath) || new FileInfo(filePath).Length == 0)
+            {
+                // Créer le fichier s'il n'existe pas ou s'il est vide
+                File.WriteAllText(filePath, "[]");
+            }
+        }
+        public List<T> LoadListFromJson<T>()
+        {
+            string pathElement = SetPath(typeof(T));
 
-            // Ajouter l'élément à la liste
-            listElement.Add(schoolElement);
+            if (!File.Exists(pathElement))
+            {
+                return new List<T>();
+            }
 
-            // Enregistrer la liste mise à jour dans le fichier JSON
-            SaveListToJson(listElement, elementType);
+            string json = File.ReadAllText(pathElement);
+            return JsonConvert.DeserializeObject<List<T>>(json);
         }
 
         public List<object> LoadListFromJson(Type objectType)
         {
             string pathElement = SetPath(objectType);
 
-            // Vérifier si le fichier existe
             if (!File.Exists(pathElement))
             {
                 return new List<object>();
@@ -58,15 +73,24 @@ namespace school_project.Services
             return JsonConvert.DeserializeObject<List<object>>(json);
         }
 
-        private void SaveListToJson(List<object> ListElement, Type objectType)
+        public void SaveListToJson<T>(List<T> listElement, Type objectType)
         {
-            string PathElement = SetPath(objectType);
-            //Debug.WriteLine(PathElement);
-            // Écrire la liste dans le fichier JSON
-            string updatedJson = JsonConvert.SerializeObject(ListElement, Formatting.Indented);
-            File.WriteAllText(PathElement, updatedJson);
+            string pathElement = SetPath(objectType);
+            string updatedJson = JsonConvert.SerializeObject(listElement, Formatting.Indented);
+            File.WriteAllText(pathElement, updatedJson);
         }
 
+        public void AddToJson(object schoolElement)
+        {
+            // Charger la liste existante depuis le fichier JSON en utilisant le type de l'objet
+            List<object> listElement = LoadListFromJson(schoolElement.GetType());
+
+            // Ajouter l'élément à la liste
+            listElement.Add(schoolElement);
+
+            // Enregistrer la liste mise à jour dans le fichier JSON en utilisant le type de l'objet
+            SaveListToJson(listElement, schoolElement.GetType());
+        }
 
         protected string SetPath(Type objectType)
         {
@@ -85,88 +109,43 @@ namespace school_project.Services
             {
                 PathElement = relativeActiPath;
             }
-            return PathElement;
-            
+            Debug.WriteLine(PathElement);
+            Debug.WriteLine(typeof(Student));
+            Debug.WriteLine(typeof(Teacher));
+
+            return PathElement;   
         }
-
-        
-
+        public T GetElementById<T>(int index)
+        {
+            List<T> listElement = LoadListFromJson<T>();
+            if (index >= 0 && index < listElement.Count)
+            {
+                T ToReturn = (T)listElement[index];
+                return ToReturn;
+            }
+            return default(T);
+        }
     }
 
     public class DataManagerStudent : DataManager
     {
-        //Modified for student only to be used easily in GetStudentById()
-        private List<Student> LoadListStudentFromJson()
-        {
-            string pathElement = SetPath(typeof(Student));
-
-            // Vérifier si le fichier existe
-            if (!File.Exists(pathElement))
-            {
-                return new List<Student>();
-            }
-
-            string json = File.ReadAllText(pathElement);
-            return JsonConvert.DeserializeObject<List<Student>>(json);
-        }
-
-        //Modified for student only to be used easily in ResendToJson
-        private void SaveListToJson(List<Student> ListElement, Type objectType)
-        {
-            string PathElement = SetPath(objectType);
-
-            // Écrire la liste dans le fichier JSON
-            string updatedJson = JsonConvert.SerializeObject(ListElement, Formatting.Indented);
-            File.WriteAllText(PathElement, updatedJson);
-        }
-
-        public Student GetStudentById(int index)
-        {
-            List<Student> listStudents = LoadListStudentFromJson();
-            if (index >= 0 && index < listStudents.Count)
-            { 
-                Student student = (Student)listStudents[index];
-                return student;
-            }
-            return null;
-        }
-
-        private List<Acti> LoadListActiFromJson()
-        {
-            string pathElement = SetPath(typeof(Acti));
-
-            // Vérifier si le fichier existe
-            if (!File.Exists(pathElement))
-            {
-                return new List<Acti>();
-            }
-
-            string json = File.ReadAllText(pathElement);
-            return JsonConvert.DeserializeObject<List<Acti>>(json);
-        }
-
-        public Acti GetActiById(int index)
-        {
-            List<Acti> listActi = LoadListActiFromJson();
-            return listActi[index];
-        }
-
         public void ResendToJson(Student student, int index)
         {
-            List<Student> listStudents = LoadListStudentFromJson();
+            List<Student> listStudents = LoadListFromJson<Student>();
             listStudents[index] = student;
-            SaveListToJson(listStudents, typeof(Student));
+            File.WriteAllText(SetPath(typeof(Student)), "[]");
+            SaveListToJson<Student>(listStudents,typeof(Student));
         }
         public void DeleteStudentById(int index)
         {
-            List<Student> listStudents = LoadListStudentFromJson();
+            List<Student> listStudents = LoadListFromJson<Student>();
             listStudents.RemoveAt(index);
         }
 
         public string Tombola()
         {
-            List<Student> listStudents = LoadListStudentFromJson();
-            List<Acti> evalList = LoadListActiFromJson();
+            List<Student> listStudents = LoadListFromJson<Student>();
+            List<Acti> evalList = LoadListFromJson<Acti>();
 
             Random rnd = new Random();
 
@@ -175,7 +154,7 @@ namespace school_project.Services
             int actiIndex = rnd.Next(evalList.Count);
 
             Acti randomActi = evalList[actiIndex];
-            Student randomStudent = GetStudentById(studentIndex);
+            Student randomStudent = GetElementById<Student>(studentIndex);
 
             string randomStudentName = randomStudent.DisplayName;
             string randomActiName = randomActi.DisplayName;
@@ -192,40 +171,9 @@ namespace school_project.Services
     }
     public class DataManagerActi : DataManager
     {
-        private List<Acti> LoadListActiFromJson()
-        {
-            string pathElement = SetPath(typeof(Acti));
-
-            // Vérifier si le fichier existe
-            if (!File.Exists(pathElement))
-            {
-                return new List<Acti>();
-            }
-
-            string json = File.ReadAllText(pathElement);
-            return JsonConvert.DeserializeObject<List<Acti>>(json);
-        }
-
-        private void SaveListToJson(List<Acti> ListElement, Type objectType)
-        {
-            string PathElement = SetPath(objectType);
-
-            // Écrire la liste dans le fichier JSON
-            string updatedJson = JsonConvert.SerializeObject(ListElement, Formatting.Indented);
-            File.WriteAllText(PathElement, updatedJson);
-        }
-
-        public Acti GetActiById(int index)
-        {
-            List<Acti> listActi = LoadListActiFromJson();
-            Acti acti = (Acti)listActi[index];
-
-            return acti;
-        }
-
         public void ResendToJson(Acti acti, int index)
         {
-            List<Acti> listActi = LoadListActiFromJson();
+            List<Acti> listActi = LoadListFromJson<Acti>();
             listActi[index] = acti;
             SaveListToJson(listActi, typeof(Acti));
         }
@@ -234,30 +182,6 @@ namespace school_project.Services
 
     public class DataManagerTeacher : DataManager
     {
-        private List<Teacher> LoadListTeacherFromJson()
-        {
-            string pathElement = SetPath(typeof(Acti));
-
-            // Vérifier si le fichier existe
-            if (!File.Exists(pathElement))
-            {
-                return new List<Teacher>();
-            }
-
-            string json = File.ReadAllText(pathElement);
-            return JsonConvert.DeserializeObject<List<Teacher>>(json);
-        }
-
-        private void SaveListToJson(List<Teacher> ListElement, Type objectType)
-        {
-            string PathElement = SetPath(objectType);
-
-            // Écrire la liste dans le fichier JSON
-            string updatedJson = JsonConvert.SerializeObject(ListElement, Formatting.Indented);
-            File.WriteAllText(PathElement, updatedJson);
-        }
-
-
     }
 
 }

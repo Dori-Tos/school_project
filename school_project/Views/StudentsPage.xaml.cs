@@ -14,6 +14,7 @@ public partial class StudentsPage : ContentPage
     public ObservableCollection<Student> Students { get; set; }
 
     public int selectedID { get; set; }
+    
 
     public StudentsPage()
 	{
@@ -55,15 +56,21 @@ public partial class StudentsPage : ContentPage
             string relativeStudentPath = System.IO.Path.Combine(FileSystem.AppDataDirectory, "student.json");
 
             string jsonContent = File.ReadAllText(relativeStudentPath);
-
-            var students = JsonConvert.DeserializeObject<List<Student>>(jsonContent);
-
-            if (students.Count > 0)
+            List<Student> students = new List<Student>();
+            if (jsonContent != null)
             {
-                foreach (var student in students)
+                students = JsonConvert.DeserializeObject<List<Student>>(jsonContent);
+                if (students.Count > 0)
                 {
-                    Students.Add(student);
+                    foreach (var student in students)
+                    {
+                        Students.Add(student);
+                    }
                 }
+            }
+    
+            else
+            {
             }
 
         }
