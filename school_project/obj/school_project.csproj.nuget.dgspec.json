@@ -1,7 +1,6 @@
 {
   "format": 1,
   "restore": {
-<<<<<<< HEAD
     "C:\\Private\\Folders\\Ecam\\3BE\\Programmation orientée objet\\school_project\\school_project\\school_project.csproj": {}
   },
   "projects": {
@@ -13,30 +12,13 @@
         "projectPath": "C:\\Private\\Folders\\Ecam\\3BE\\Programmation orientée objet\\school_project\\school_project\\school_project.csproj",
         "packagesPath": "C:\\Users\\doria\\.nuget\\packages\\",
         "outputPath": "C:\\Private\\Folders\\Ecam\\3BE\\Programmation orientée objet\\school_project\\school_project\\obj\\",
-=======
-    "C:\\Users\\ecam\\Source\\Repos\\school_project\\school_project\\school_project.csproj": {}
-  },
-  "projects": {
-    "C:\\Users\\ecam\\Source\\Repos\\school_project\\school_project\\school_project.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "C:\\Users\\ecam\\Source\\Repos\\school_project\\school_project\\school_project.csproj",
-        "projectName": "school_project",
-        "projectPath": "C:\\Users\\ecam\\Source\\Repos\\school_project\\school_project\\school_project.csproj",
-        "packagesPath": "C:\\Users\\ecam\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ecam\\Source\\Repos\\school_project\\school_project\\obj\\",
->>>>>>> arthur
         "projectStyle": "PackageReference",
         "crossTargeting": true,
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-<<<<<<< HEAD
           "C:\\Users\\doria\\AppData\\Roaming\\NuGet\\NuGet.Config",
-=======
-          "C:\\Users\\ecam\\AppData\\Roaming\\NuGet\\NuGet.Config",
->>>>>>> arthur
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -212,10 +194,6 @@
               "version": "[33.0.95, 33.0.95]"
             },
             {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[7.0.14, 7.0.14]"
-            },
-            {
               "name": "Microsoft.Maui.Controls.Ref.android",
               "version": "[7.0.101, 7.0.101]"
             },
@@ -238,14 +216,6 @@
             {
               "name": "Microsoft.Maui.Essentials.Runtime.android",
               "version": "[7.0.101, 7.0.101]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[7.0.14, 7.0.14]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[7.0.14, 7.0.14]"
             }
           ],
           "frameworkReferences": {
@@ -328,10 +298,6 @@
           "warn": true,
           "downloadDependencies": [
             {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[7.0.14, 7.0.14]"
-            },
-            {
               "name": "Microsoft.iOS.Ref",
               "version": "[16.4.7129, 16.4.7129]"
             },
@@ -362,14 +328,6 @@
             {
               "name": "Microsoft.Maui.Essentials.Runtime.ios",
               "version": "[7.0.101, 7.0.101]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[7.0.14, 7.0.14]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[7.0.14, 7.0.14]"
             }
           ],
           "frameworkReferences": {
@@ -453,10 +411,6 @@
           "warn": true,
           "downloadDependencies": [
             {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[7.0.14, 7.0.14]"
-            },
-            {
               "name": "Microsoft.MacCatalyst.Ref",
               "version": "[16.4.7129, 16.4.7129]"
             },
@@ -487,14 +441,6 @@
             {
               "name": "Microsoft.Maui.Essentials.Runtime.maccatalyst",
               "version": "[7.0.101, 7.0.101]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[7.0.14, 7.0.14]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[7.0.14, 7.0.14]"
             }
           ],
           "frameworkReferences": {
@@ -575,10 +521,6 @@
           "warn": true,
           "downloadDependencies": [
             {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[7.0.14, 7.0.14]"
-            },
-            {
               "name": "Microsoft.AspNetCore.App.Runtime.win-x64",
               "version": "[7.0.15, 7.0.15]"
             },
@@ -607,24 +549,12 @@
               "version": "[7.0.101, 7.0.101]"
             },
             {
-              "name": "Microsoft.NETCore.App.Host.win-x64",
-              "version": "[7.0.14, 7.0.14]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[7.0.14, 7.0.14]"
-            },
-            {
               "name": "Microsoft.NETCore.App.Runtime.win-x64",
               "version": "[7.0.15, 7.0.15]"
             },
             {
               "name": "Microsoft.Windows.SDK.NET.Ref",
               "version": "[10.0.19041.31, 10.0.19041.31]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[7.0.14, 7.0.14]"
             },
             {
               "name": "Microsoft.WindowsDesktop.App.Runtime.win-x64",
