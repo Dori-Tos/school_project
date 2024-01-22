@@ -5,37 +5,47 @@
              Title="HomePage">
 
     <ScrollView>
-        <VerticalStackLayout
-        Spacing="25"
-        Padding="30,0"
-        VerticalOptions="Center">
+
+        <Grid RowSpacing="10" Padding="10" HorizontalOptions="Center">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="300"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="75"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
 
             <Image
-            Source="dotnet_bot.png"
-            SemanticProperties.Description="Cute dot net bot waving hi to you!"
-            HeightRequest="200"
-            HorizontalOptions="Center" />
+                    Source="logo_ecam_hd.png"
+                    SemanticProperties.Description="Logo of our beloved high school !"
+                    HeightRequest="200"
+                    HorizontalOptions="Center" 
+                    Grid.Row="0"/>
 
             <Label
-            Text="Hello, World!"
-            SemanticProperties.HeadingLevel="Level1"
-            FontSize="32"
-            HorizontalOptions="Center" />
+                    Text="Welcome to DataSchool !"
+                    SemanticProperties.HeadingLevel="Level1"
+                    FontSize="26"
+                    HorizontalOptions="Center" 
+                    Grid.Row="1"/>
 
             <Label
-            Text="Welcome to .NET Multi-platform App UI"
-            SemanticProperties.HeadingLevel="Level2"
-            SemanticProperties.Description="Welcome to dot net Multi platform App U I"
-            FontSize="18"
-            HorizontalOptions="Center" />
+                    Text="The new school manager of the ECAM"
+                    SemanticProperties.HeadingLevel="Level2"
+                    FontSize="18"
+                    HorizontalOptions="Center" 
+                    VerticalOptions="Start"
+                    Grid.Row="2"/>
 
             <Button
-            x:Name="TombolaButton"
-            Text="Here's a surprise"
-            Clicked="OnTombolaButtonClicked"
-            HorizontalOptions="Center" />
+                    x:Name="TombolaButton"
+                    Text="Here's a surprise"
+                    Clicked="OnTombolaButtonClicked"
+                    HorizontalOptions="Center" 
+                    Grid.Row="3"/>
 
-        </VerticalStackLayout>
+        </Grid>
+        
     </ScrollView>
-    
+
 </ContentPage>

@@ -7,7 +7,6 @@ public partial class HomePage : ContentPage
 	public HomePage()
 	{
 		InitializeComponent();
-        Debug.WriteLine("JE SUIS ICI");
         DataManager datamanager = new DataManager();
         datamanager.EnsureJsonFilesExist();
     }

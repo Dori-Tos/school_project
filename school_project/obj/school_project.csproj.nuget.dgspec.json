@@ -1,24 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Arthur\\Source\\Repos\\school_project\\school_project\\school_project.csproj": {}
+    "C:\\Private\\Folders\\Ecam\\3BE\\Programmation orientée objet\\school_project\\school_project\\school_project.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Arthur\\Source\\Repos\\school_project\\school_project\\school_project.csproj": {
+    "C:\\Private\\Folders\\Ecam\\3BE\\Programmation orientée objet\\school_project\\school_project\\school_project.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Arthur\\Source\\Repos\\school_project\\school_project\\school_project.csproj",
+        "projectUniqueName": "C:\\Private\\Folders\\Ecam\\3BE\\Programmation orientée objet\\school_project\\school_project\\school_project.csproj",
         "projectName": "school_project",
-        "projectPath": "C:\\Users\\Arthur\\Source\\Repos\\school_project\\school_project\\school_project.csproj",
-        "packagesPath": "C:\\Users\\Arthur\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Arthur\\Source\\Repos\\school_project\\school_project\\obj\\",
+        "projectPath": "C:\\Private\\Folders\\Ecam\\3BE\\Programmation orientée objet\\school_project\\school_project\\school_project.csproj",
+        "packagesPath": "C:\\Users\\doria\\.nuget\\packages\\",
+        "outputPath": "C:\\Private\\Folders\\Ecam\\3BE\\Programmation orientée objet\\school_project\\school_project\\obj\\",
         "projectStyle": "PackageReference",
         "crossTargeting": true,
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Arthur\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\doria\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
