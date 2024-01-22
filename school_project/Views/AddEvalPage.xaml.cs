@@ -14,11 +14,14 @@ public partial class AddEvalPage : ContentPage
     private Student selectedStudent;
 
     private int selectedStudentID;
-    private DataManagerActi dataManagerActi = new DataManagerActi();
 
     private List<Acti> activities;
 
+    private List<string> appreciations;
+
     public ObservableCollection<string> Activities { get; set; }
+
+    public ObservableCollection<string> Appreciations { get; set; }
 
     public AddEvalPage(Student student, int studentID)
 	{
@@ -28,6 +31,7 @@ public partial class AddEvalPage : ContentPage
         selectedStudentID = studentID;
 
         Activities = new ObservableCollection<string>();
+        Appreciations = new ObservableCollection<string>();
 
         string relativeActiPath = System.IO.Path.Combine(FileSystem.AppDataDirectory, "acti.json");
 
@@ -41,40 +45,57 @@ public partial class AddEvalPage : ContentPage
         }
 
         activityPicker.ItemsSource = Activities;
+
+        appreciations = new List<string> { "N", "C", "B", "TB", "X" };
+
+        Appreciations.Add("N");
+        Appreciations.Add("C");
+        Appreciations.Add("B");
+        Appreciations.Add("TB");
+        Appreciations.Add("X");
+
+        appreciationPicker.ItemsSource = Appreciations;
     }
 
     private void OnAddEvaluationClicked(object sender, EventArgs e)
     {
         var evaluationInput = pointsEntry.Text;
-
-        var selectedActivity = activityPicker.SelectedItem as Acti;
-        int selectedActivityId = activityPicker.SelectedIndex;
-
-        Debug.WriteLine(selectedActivityId);
-
         var selectedActivityID = activityPicker.SelectedIndex;
+        var selectedApprectiationID = appreciationPicker.SelectedIndex;
 
-
-        //var selectedActivity = activities[selectedActivityID];
+        var selectedActivity = activities[selectedActivityID];
 
         Evaluation newEvaluation = new Evaluation(null);
 
-        if (int.TryParse(evaluationInput, out int numericNote))
+        if (selectedActivity != null)
         {
-            newEvaluation = new Cote(dataManagerActi.GetElementById<Acti>(selectedActivityId), numericNote);
+            if (int.TryParse(evaluationInput, out int numericNote))
+            {
+                newEvaluation = new Cote(selectedActivity, numericNote);
+            }
+            if (evaluationInput == null && selectedApprectiationID != -1)
+            {
+                var selectedAppreciation = appreciations[selectedApprectiationID];
+
+                newEvaluation = new Appreciation(selectedActivity, selectedAppreciation);
+            }
+
+            selectedStudent.Add(newEvaluation);
+
+            DataManagerStudent dataManagerStudent = new DataManagerStudent();
+            dataManagerStudent.ResendToJson(selectedStudent, selectedStudentID);
+
+            pointsEntry.Text = string.Empty;
+
+            activityPicker.SelectedItem = null;
+            appreciationPicker.SelectedItem = null;
+
+            Confirmation.Text = "Sucessfuly added the evaluation";
         }
-        else
-        {
-            newEvaluation = new Appreciation(dataManagerActi.GetElementById<Acti>(selectedActivityId), evaluationInput);
-        }
+    }
 
-        selectedStudent.Add(newEvaluation);
-
-        DataManagerStudent dataManagerStudent = new DataManagerStudent();
-        dataManagerStudent.ResendToJson(selectedStudent, selectedStudentID);
-
-        pointsEntry.Text = string.Empty;
-
-        Confirmation.Text = "Sucessfuly added the evaluation";
+    private void OnActivityPickerClicked(object sender, EventArgs e)
+    {
+        Confirmation.Text = null;
     }
 }
