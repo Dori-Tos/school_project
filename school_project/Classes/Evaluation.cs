@@ -46,8 +46,8 @@ namespace school_project.Classes
     {
         public string appreciation;
 
-        public string[] letters = { "X", "TB", "B", "C", "N" };
-        public int[] numbers = { 20, 16, 12, 8, 4 };
+        private string[] letters = { "X", "TB", "B", "C", "N" };
+        private int[] numbers = { 20, 16, 12, 8, 4 };
 
         public Appreciation(Acti activity, string appreciation) :
             base(activity)
