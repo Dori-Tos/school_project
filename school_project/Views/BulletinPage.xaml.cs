@@ -43,7 +43,7 @@ public partial class BulletinPage : ContentPage
         }
         else
         {
-            StudentDisplayAverage.Text = null;
+            StudentDisplayAverage.Text = "The student must have notes is his bulletin to show an average.";
         }
         
     }

@@ -39,6 +39,8 @@ public partial class StudentsPage : ContentPage
 
             await Navigation.PushAsync(new AddEvalPage(selectedStudent, selectedStudentID)); 
         }
+
+        ((ListView)sender).SelectedItem = null;
     }
 
     private async void OnBulletinButtonClicked(object sender, EventArgs e)
