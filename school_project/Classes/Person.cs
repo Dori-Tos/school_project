@@ -92,11 +92,6 @@ namespace school_project.Classes
                     actiList.Add(cours[i].activity.name.ToString());
                 }
             }
-            Debug.WriteLine("Contenu de coteList :");
-            //foreach (var valeur in actiList)
-            //{
-            //    Debug.WriteLine(valeur);
-            //}
             return actiList;
         }
 
@@ -107,26 +102,25 @@ namespace school_project.Classes
             List<string> actiList = new List<string>();
             List<int> denom = new List<int>();
 
+            Debug.WriteLine(cours.Count);
             for (int i = 0; i < cours.Count; i++)
             {
                 if (cours[i] != null && cours[i].activity != null) {
-                    if (actiList.Contains(cours[i].activity.name))
+                    if (!actiList.Contains(cours[i].activity.name))
                     {
-                        //Debug.WriteLine("DIFF");
+                        Debug.WriteLine("DIFF");
                         actiList.Add(cours[i].activity.name.ToString());
                         coteList.Add(cours[i].Note());
                         denom.Add(1);
+                        Debug.WriteLine(cours[i].activity.name.ToString());
+                        Debug.WriteLine(cours[i].Note());
                     }
                     else
                     {
-                        //Debug.WriteLine("SAME");
+                        Debug.WriteLine("SAME");
                         var doublon = cours[i].activity.name;
-                        Debug.WriteLine(actiList);
-                        Debug.WriteLine(coteList);
-                        Debug.WriteLine(doublon);
                         Debug.WriteLine(doublon.ToString());
                         int index = actiList.FindIndex(item => item == doublon);
-                        Debug.WriteLine(index);
                         coteList[index] += cours[i].Note();
                         Debug.WriteLine(cours[i].Note());
                         denom[index] += 1;
@@ -137,16 +131,10 @@ namespace school_project.Classes
 
             foreach(var valeur in coteList)
             {
+                Debug.WriteLine(valeur.ToString("#.00"));
                 string valeurv2 = valeur.ToString("#.00");
                 coteListv2.Add(valeurv2);
             }
-            /*
-            Debug.WriteLine("Contenu de coteList :");
-            foreach (var valeur in coteListv2)
-            {
-                Debug.WriteLine(valeur);
-            }
-            */
             return coteListv2;
         }
     }
