@@ -37,7 +37,7 @@ public partial class BulletinPage : ContentPage
 
         ListNotes.ItemsSource = studentNotesList;
 
-        if (selectedStudentAverage > 0)
+        if (selectedStudentAverage != 0)
         {
             StudentDisplayAverage.Text = selectedStudentAverage.ToString("#.00");
         }
