@@ -29,7 +29,7 @@
     <AppXManifest Include="C:\Users\ecam\Source\Repos\school_project\school_project\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2024-01-24T20:26:26.019</Modified>
+      <Modified>2024-01-24T21:19:20.564</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
@@ -43,11 +43,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\ecam\Source\Repos\school_project\school_project\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\school_project.dll">
       <PackagePath>school_project.dll</PackagePath>
-      <Modified>2024-01-24T20:26:23.505</Modified>
+      <Modified>2024-01-24T21:19:19.287</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\ecam\Source\Repos\school_project\school_project\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\apphost.exe">
       <PackagePath>school_project.exe</PackagePath>
-      <Modified>2024-01-24T20:26:23.576</Modified>
+      <Modified>2024-01-24T21:19:19.291</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\ecam\Source\Repos\school_project\school_project\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\school_project.deps.json">
       <PackagePath>school_project.deps.json</PackagePath>

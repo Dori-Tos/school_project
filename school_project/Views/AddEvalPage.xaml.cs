@@ -84,10 +84,12 @@ public partial class AddEvalPage : ContentPage
             {
                 if (int.TryParse(evaluationInput, out int numericNote))
                 {
+                    Debug.WriteLine("COTE");
                     newEvaluation = new Cote(selectedActivity, numericNote);
                 }
                 if (evaluationInput == null && selectedApprectiationID != -1)
                 {
+                    Debug.WriteLine("APPRECIATION");
                     var selectedAppreciation = appreciations[selectedApprectiationID];
 
                     newEvaluation = new Appreciation(selectedActivity, selectedAppreciation);

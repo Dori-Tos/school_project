@@ -76,6 +76,8 @@ namespace school_project.Classes
             {
                 if (cours[i] != null && cours[i].activity != null)
                 {
+                    // if (cours[i]) == Appreciation)
+                    Debug.WriteLine(cours[i]);
                     avg = avg + cours[i].Note() * (cours[i].activity.ECTS / credits);
                 }
             }

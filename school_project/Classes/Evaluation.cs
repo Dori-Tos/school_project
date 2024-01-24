@@ -53,6 +53,7 @@ namespace school_project.Classes
             base(activity)
         {
             this.appreciation = appreciation;
+            this.note = Note();
         }
         int res = 0;
         public override int Note()

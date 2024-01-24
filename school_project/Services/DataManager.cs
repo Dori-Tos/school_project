@@ -17,15 +17,6 @@ namespace school_project.Services
 {
     public class DataManager
     {
-        /*
-
-        private List<Teacher> Teachers { get; set; } = new List<Teacher>();
-        private List<Student> Students { get; set; } = new List<Student>();
-        private List<Acti> Activities { get; set;  } = new List<Acti>();
-        */
-        // Chemin relatif depuis le répertoire de base de l'application
-        
-
         private string relativeTeacherPath =  System.IO.Path.Combine(FileSystem.AppDataDirectory, "teacher.json");
         private string relativeStudentPath = System.IO.Path.Combine(FileSystem.AppDataDirectory, "student.json");
         private string relativeActiPath = System.IO.Path.Combine(FileSystem.AppDataDirectory, "acti.json");
