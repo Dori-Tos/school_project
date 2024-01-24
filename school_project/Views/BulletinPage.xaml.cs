@@ -37,13 +37,13 @@ public partial class BulletinPage : ContentPage
 
         ListNotes.ItemsSource = studentNotesList;
 
-        if (selectedStudentAverage > 0)
+        if (selectedStudentAverage != 0)
         {
             StudentDisplayAverage.Text = selectedStudentAverage.ToString("#.00");
         }
         else
         {
-            StudentDisplayAverage.Text = null;
+            StudentDisplayAverage.Text = "The student must have notes is his bulletin to show an average.";
         }
         
     }

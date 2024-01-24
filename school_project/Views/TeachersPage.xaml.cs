@@ -66,4 +66,9 @@ public partial class TeachersPage : ContentPage
             entrySalary.Text = string.Empty;
         }
     }
+
+    private void OnReloadClicked(object sender, EventArgs e)
+    {
+        LoadTeachers();
+    }
 }

@@ -9,6 +9,7 @@
             <RowDefinition Height="40"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
@@ -61,6 +62,8 @@
         <Entry x:Name="entrySalary" Placeholder="Salary" Keyboard="Numeric" Grid.Column="2" Grid.Row="2"/>
         <Button Text="Add New Teacher" Clicked="AddNewTeacherClicked" Grid.Column="3" Grid.Row="2"/>
 
+        <Button Text="Reload List" Clicked="OnReloadClicked" Grid.Column="3" Grid.Row="3"/>
+        
     </Grid>
 
 </ContentPage>

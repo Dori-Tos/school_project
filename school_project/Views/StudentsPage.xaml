@@ -9,6 +9,7 @@
             <RowDefinition Height="30"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
@@ -72,6 +73,8 @@
         <Entry x:Name="entryFirstName" Placeholder="Firstname" Grid.Column="0" Grid.Row="2"/>
         <Entry x:Name="entryLastName" Placeholder="Lastname" Grid.Column="1" Grid.Row="2"/>
         <Button Text="Add New Student" Clicked="AddNewStudentClicked" Grid.Column="2" Grid.Row="2"/>
+
+        <Button Text="Reload List" Clicked="OnReloadClicked" Grid.Column="2" Grid.Row="3"/>
 
     </Grid>
 

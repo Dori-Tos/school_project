@@ -10,6 +10,7 @@
             <RowDefinition Height="40"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
@@ -64,6 +65,8 @@
         <Entry x:Name="entryCode" Placeholder="Code" Grid.Column="2" Grid.Row="2"/>
         <Picker x:Name="TeacherPicker" Title="Select Teacher" Grid.Column="3" Grid.Row="2"></Picker>
         <Button Text="Add New Activity" Clicked="AddNewActivityClicked" Grid.Column="4" Grid.Row="2"/>
+
+        <Button Text="Reload List" Clicked="OnReloadClicked" Grid.Column="4" Grid.Row="3"/>
 
     </Grid>
 

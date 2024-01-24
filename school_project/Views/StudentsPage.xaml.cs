@@ -14,11 +14,11 @@ public partial class StudentsPage : ContentPage
     public ObservableCollection<Student> Students { get; set; }
 
     public int selectedID { get; set; }
-    
+
 
     public StudentsPage()
-	{
-		InitializeComponent();
+    {
+        InitializeComponent();
 
         Students = new ObservableCollection<Student>();
 
@@ -26,19 +26,21 @@ public partial class StudentsPage : ContentPage
 
         LoadStudents();
     }
-    
+
     private async void OnStudentSelected(object sender, SelectedItemChangedEventArgs e)
     {
         if (e.SelectedItem == null)
-        { 
-            return; 
+        {
+            return;
         }
-        if (e.SelectedItem is Student selectedStudent) 
+        if (e.SelectedItem is Student selectedStudent)
         {
             int selectedStudentID = e.SelectedItemIndex;
 
-            await Navigation.PushAsync(new AddEvalPage(selectedStudent, selectedStudentID)); 
+            await Navigation.PushAsync(new AddEvalPage(selectedStudent, selectedStudentID));
         }
+
+        ((ListView)sender).SelectedItem = null;
     }
 
     private async void OnBulletinButtonClicked(object sender, EventArgs e)
@@ -51,6 +53,8 @@ public partial class StudentsPage : ContentPage
 
     private void LoadStudents()
     {
+        Students.Clear();
+
         try
         {
             string relativeStudentPath = System.IO.Path.Combine(FileSystem.AppDataDirectory, "student.json");
@@ -68,7 +72,7 @@ public partial class StudentsPage : ContentPage
                     }
                 }
             }
-    
+
             else
             {
             }
@@ -101,5 +105,17 @@ public partial class StudentsPage : ContentPage
             entryFirstName.Text = string.Empty;
             entryLastName.Text = string.Empty;
         }
+    }
+
+    private void OnReloadClicked(object sender, EventArgs e)
+    {
+        LoadStudents();
+    }
+
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+
+        LoadStudents();
     }
 }

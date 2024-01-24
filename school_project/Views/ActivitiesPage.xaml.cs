@@ -118,4 +118,9 @@ public partial class ActivitiesPage : ContentPage
         }
     }
 
+    private void OnReloadClicked(object sender, EventArgs e)
+    {
+        LoadActivities();
+    }
+
 }

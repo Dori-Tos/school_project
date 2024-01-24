@@ -31,9 +31,4 @@
 
     </TabBar>
 
-    <ShellContent
-    Title="Tombola"
-    ContentTemplate="{DataTemplate views:TombolaPage}"
-    Route="TombolaPage" />
-
 </Shell>

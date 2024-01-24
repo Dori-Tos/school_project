@@ -13,6 +13,6 @@ public partial class HomePage : ContentPage
 
     private async void OnTombolaButtonClicked(object sender, EventArgs e)
     {
-        await Shell.Current.GoToAsync("///TombolaPage");
+        await Navigation.PushAsync(new TombolaPage());
     }
 }

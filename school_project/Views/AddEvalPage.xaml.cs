@@ -23,6 +23,8 @@ public partial class AddEvalPage : ContentPage
 
     public ObservableCollection<string> Appreciations { get; set; }
 
+    private DataManagerStudent dataManagerStudent = new DataManagerStudent();
+
     public AddEvalPage(Student student, int studentID)
 	{
 		InitializeComponent();
@@ -69,33 +71,48 @@ public partial class AddEvalPage : ContentPage
 
         if (selectedActivity != null)
         {
-            if (int.TryParse(evaluationInput, out int numericNote))
+            if (evaluationInput != null && selectedApprectiationID != -1)
             {
-                newEvaluation = new Cote(selectedActivity, numericNote);
+                Confirmation.Text = "A new eval must contain a cote or an appreciation, not both.";
+
+                pointsEntry.Text = null;
+
+                activityPicker.SelectedItem = null;
+                appreciationPicker.SelectedIndex = -1;
             }
-            if (evaluationInput == null && selectedApprectiationID != -1)
+            else
             {
-                var selectedAppreciation = appreciations[selectedApprectiationID];
+                if (int.TryParse(evaluationInput, out int numericNote))
+                {
+                    newEvaluation = new Cote(selectedActivity, numericNote);
+                }
+                if (evaluationInput == null && selectedApprectiationID != -1)
+                {
+                    var selectedAppreciation = appreciations[selectedApprectiationID];
 
-                newEvaluation = new Appreciation(selectedActivity, selectedAppreciation);
+                    newEvaluation = new Appreciation(selectedActivity, selectedAppreciation);
+                }
+
+
+                selectedStudent.Add(newEvaluation);
+
+                dataManagerStudent.ResendToJson(selectedStudent, selectedStudentID);
+
+                pointsEntry.Text = null;
+
+                activityPicker.SelectedItem = null;
+                appreciationPicker.SelectedIndex = -1;
+
+                Confirmation.Text = "Sucessfuly added the evaluation";
             }
-
-            selectedStudent.Add(newEvaluation);
-
-            DataManagerStudent dataManagerStudent = new DataManagerStudent();
-            dataManagerStudent.ResendToJson(selectedStudent, selectedStudentID);
-
-            pointsEntry.Text = string.Empty;
-
-            activityPicker.SelectedItem = null;
-            appreciationPicker.SelectedItem = null;
-
-            Confirmation.Text = "Sucessfuly added the evaluation";
         }
     }
 
     private void OnActivityPickerClicked(object sender, EventArgs e)
     {
-        Confirmation.Text = null;
+        if (activityPicker.SelectedIndex != -1)
+        {
+            Confirmation.Text = string.Empty;
+        }
     }
 }
