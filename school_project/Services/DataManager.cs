@@ -17,11 +17,12 @@ namespace school_project.Services
 {
     public class DataManager
     {
+        /*
 
         private List<Teacher> Teachers { get; set; } = new List<Teacher>();
         private List<Student> Students { get; set; } = new List<Student>();
         private List<Acti> Activities { get; set;  } = new List<Acti>();
-
+        */
         // Chemin relatif depuis le répertoire de base de l'application
         
 
@@ -59,7 +60,7 @@ namespace school_project.Services
             string json = File.ReadAllText(pathElement);
             return JsonConvert.DeserializeObject<List<T>>(json);
         }
-
+        
         public List<object> LoadListFromJson(Type objectType)
         {
             string pathElement = SetPath(objectType);
@@ -72,7 +73,7 @@ namespace school_project.Services
             string json = File.ReadAllText(pathElement);
             return JsonConvert.DeserializeObject<List<object>>(json);
         }
-
+        
         public void SaveListToJson<T>(List<T> listElement, Type objectType)
         {
             string pathElement = SetPath(objectType);
@@ -135,11 +136,6 @@ namespace school_project.Services
             listStudents[index] = student;
             File.WriteAllText(SetPath(typeof(Student)), "[]");
             SaveListToJson<Student>(listStudents,typeof(Student));
-        }
-        public void DeleteStudentById(int index)
-        {
-            List<Student> listStudents = LoadListFromJson<Student>();
-            listStudents.RemoveAt(index);
         }
 
         public string Tombola()

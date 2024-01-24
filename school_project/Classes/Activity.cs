@@ -25,9 +25,5 @@ namespace school_project.Classes
         {
             get { return $"{name}"; }
         }
-        public void Save() { }
-        public void Delete() { }
-
-        public void Load(string file) { }
     }
 }
